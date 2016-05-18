@@ -200,15 +200,20 @@ Codes used to segregate business sectors within a trading company, and can be ap
     + Attributes (404 Response)
 
 ## Expense
-Codes that are primarily used for accounting transaction analysis purposes
+Codes that are primarily used for accounting transaction analysis purposes.
 ### Expense List [/ReferenceData/{TradingEntityId}/NominalLedger/Expense/{Property}/{PropertyValue}]
 
 + Request
     [AccessToken][]
 
 + Parameters
-    + TradingEntityId (required, string, `AB`) ...  specific trading entity
-    + DepartmentId (required, string, `5100`) ...  property department id 
+    + TradingEntityId (required, string, `AB`) 
+    + Property (optional, enum[string])  
+       + Members
+            + ExpenseId
+            + EDICode
+            + Status 
+    + PropertyValue (optional, string, `AF`) 
 
 + Response 200 (application/json)
     + Attributes ()
