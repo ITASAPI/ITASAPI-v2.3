@@ -202,8 +202,15 @@ Codes used to segregate business sectors within a trading company, and can be ap
 ## Expense List [/ReferenceData/{TradingEntityId}/NominalLedger/Expense/{Property}/{PropertyValue}]
 Codes that are primarily used for accounting transaction analysis purposes.
 ### List Expenses [GET]
+`New` endpoint in release 2.3
+
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
+|ExpenseId|cmy101_exp|`string`|7|||
+|ExpenseDescription|cmy101_name|`string`|40|||
+|EDICode|cmy101_altcode|`string`|15|||
+|Status|cmy101_inactive|`string`|1|||
+
 
 + Request
     [AccessToken][]
@@ -218,6 +225,7 @@ Codes that are primarily used for accounting transaction analysis purposes.
     + PropertyValue (optional, string, `F`) 
 
 + Response 200 (application/json)
+    + Attributes (Expense List)
 
 + Response 400 (application/json)
     + Attributes (400 Response)
@@ -1424,6 +1432,13 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + CountryId: GB (string)
 + EDICode: 1234 (string)
 + Status: F (string)
+
+## Expense List (object)
++ ExpenseId: 1COES (string)
++ ExpenseDescription: Contingency and Escalation (string)
++ EDICode: abc123 (string)
++ Status: F (string)
+
 
 ## ExpedCallOff (object)
 + ReleaseId: 123 (number)
