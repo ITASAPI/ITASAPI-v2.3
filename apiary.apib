@@ -1021,7 +1021,7 @@ Document summary information including properties specific to integration requir
 ### Read Transaction Header [GET]
 + Response 200 (application/json)
 
-## Transaction > Transaction Header List[/Accounting/{TradingEntityId}/Transaction/TransactionHeader/{Property}/{PropertyValue}]
+## Transaction > Transaction Header List [/Accounting/{TradingEntityId}/Transaction/TransactionHeader/{Property}/{PropertyValue}]
 Document summary information including properties specific to integration requirements.
 ### List Transaction Headers [GET]
 + Response 200 (application/json)
@@ -1029,19 +1029,30 @@ Document summary information including properties specific to integration requir
 
 # Group Contracts > Physical
 
+## Physical Trade [/Contract/{TradingEntityId}/Physical/PhysicalTrade/{ContratId}]
+Principle Physical Contract (agreement) details
+### List Physical Trade  [GET]
++ Response 200 (application/json)
+
+## Physical Trade List [/Contract/{TradingEntityId}/Physical/PhysicalTrade/{Property}/{PropertyValue}]
+List of Principle Physical Contracts (agreements)
+### List Physical Trades  [GET]
++ Response 200 (application/json)
+
 ## Physical Trade Commission [/Contract/{TradingEntityId}/Physical/PhysicalTradeCommission/{ContractId}]
 Broker commissions held against Physical Contracts.
 ### Read Physical Trade Commission [GET]
 + Response 200 (application/json)
 
 ## Physical Trade Commissions List [/Contract/{TradingEntityId}/Physical/PhysicalTradeCommission/{Property}/{PropertyValue}]
-Broker commissions held against Physical Contracts.
+List of Broker commissions held against Physical Contracts.
 ### List Physical Trade Commissions [GET]
 + Response 200 (application/json)
 
-## Physical Trade Details []
-
-## Physical Trade Shipments []
+## Physical Trade Shipments List [/Contract/{TradingEntityId}/Physical/PhysicalTradeShipment/{Property}/{PropertyValue}]
+List of Logistics information for Physical Contracts
+### List Physical Trade Shipment [GET]
++ Response 200 (application/json)
 
 
 # Group Inventory > Physicals > Order Scheduling
