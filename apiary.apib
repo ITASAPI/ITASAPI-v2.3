@@ -1042,7 +1042,6 @@ Provides access to full accounting ledgers by Document Reference.
 |OptionType|txx_extype|`string`|1|||
 |CommodityReference|txx_component|`string`|15|||
 
-
 + Request
     [AccessToken][]
     
@@ -1058,7 +1057,6 @@ Provides access to full accounting ledgers by Document Reference.
 
 + Response 404 (application/json)
     + Attributes (404 Response)
-
 
 
 ## UnPosted Transactions [/Accounting/{TradingEntityId}/Transaction/UnPostedTransaction/{DocRef}]
@@ -1148,12 +1146,58 @@ List of Principle Physical Contracts (agreements)
 ## Physical Trade Commission [/Contract/{TradingEntityId}/Physical/PhysicalTradeCommission/{ContractId}]
 Broker commissions held against Physical Contracts.
 ### Read Physical Trade Commission [GET]
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|ContractId|phys02_contract|`string`|10|||
+|AgentAccount|phys02_agent|`object`|10|||
+|AgentReference|phys02_agref|`string`|40|||
+
++ Request
+    [AccessToken][]
+    
++ Parameters
+    + TradingEntityId (required, string, `AB`) 
+    + ContractId (required, string, `P40000.000`)
+
 + Response 200 (application/json)
+    + Attributes (array [PhysicalTradeCommission])
+
++ Response 400 (application/json)
+    + Attributes (400 Response)
+
++ Response 404 (application/json)
+    + Attributes (404 Response)
 
 ## Physical Trade Commissions List [/Contract/{TradingEntityId}/Physical/PhysicalTradeCommission/{Property}/{PropertyValue}]
 List of Broker commissions held against Physical Contracts.
 ### List Physical Trade Commissions [GET]
+`New` in release 2.3
+
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|ContractId|phys02_contract|`string`|10|||
+|AgentAccountCode|phys02_agent|`string`|10|||
+|AgentReference|phys02_agref|`string`|40|||
+
++ Request
+    [AccessToken][]
+
++ Parameters
+    + TradingEntityId: AB (required, string) 
+    + Property (optional, enum[string])  
+       + Members
+            + ContractId (optional, string) 
+            + AgentAccountCode (optional, string)
+    + PropertyValue (optional, string, `abc`)
+
 + Response 200 (application/json)
+    + Attributes (array [PhysicalTradeCommission List])
+
++ Response 400 (application/json)
+    + Attributes (400 Response)
+
++ Response 404 (application/json)
+    + Attributes (404 Response)
 
 ## Physical Trade Shipments List [/Contract/{TradingEntityId}/Physical/PhysicalTradeShipment/{Property}/{PropertyValue}]
 List of Logistics information for Physical Contracts
@@ -1952,6 +1996,17 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + DocumentText: Text to be used in the sameple document.  (string)
 + EDICode: abc123 (string)
 + Status: F (string)
+
+## PhysicalTradeCommission (object)
++ ContractId: P00004.000 (string)
++ AgentAccount  (AccountHeader)
++ AgentReference: AGFARM01.P (string)
+
+## PhysicalTradeCommission List (object)
++ ContractId: P00004.000 (string)
++ AgentAccountCode: abc123 (string)
++ AgentReference: AGFARM01.P (string)
+
 
 ## Port (object)
 + PortId: AQABA (required, string)
