@@ -1068,13 +1068,65 @@ Provides access to financial transactions yet to be posted to the ledgers (eithe
 
 ## Transaction Header [/Accounting/{TradingEntityId}/Transaction/TransactionHeader/{DocRef}]
 Document summary information including properties specific to integration requirements.
-### Read Transaction Header [GET]
+### Update Transaction Header [PUT]
+`New` in release 2.3
+
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|DocumentReference|xtx01_docref|`string`|9||required|
+|EDICode|xtx01_axdocref|`string`|25|||
+|InterfaceStatus|xtx01_senttocashman|`string`|1|||
+|PostedDate|xtx01_postdatetime|`string`||||
+|DocumentDate|xtx01_txxddate|`datetime`||||
+
++ Request
+    [AccessToken][]
+    
++ Parameters
+    + TradingEntityId (required, string, `AB`) 
+    + DocRef (required, string, `P10000.000`)
+
 + Response 200 (application/json)
+    + Attributes (TransactionHeader)
+
++ Response 400 (application/json)
+    + Attributes (400 Response)
+
++ Response 404 (application/json)
+    + Attributes (404 Response)
 
 ## Transaction Header List [/Accounting/{TradingEntityId}/Transaction/TransactionHeader/{Property}/{PropertyValue}]
 Document summary information including properties specific to integration requirements.
 ### List Transaction Headers [GET]
+`New` in release 2.3
+
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|DocumentReference|xtx01_docref|`string`|9||required|
+|EDICode|xtx01_axdocref|`string`|25|||
+|InterfaceStatus|xtx01_senttocashman|`string`|1|||
+|PostedDate|xtx01_postdatetime|`string`||||
+|DocumentDate|xtx01_txxddate|`datetime`||||
+
++ Request
+    [AccessToken][]
+
++ Parameters
+    + TradingEntityId: AB (required, string) 
+    + Property (optional, enum[string])  
+       + Members
+            + DocRef (optional, string) 
+            + EDICode (optional, string)
+    + PropertyValue (optional, string, `abc`)
+
 + Response 200 (application/json)
+    + Attributes (array [TransactionHeader])
+
++ Response 400 (application/json)
+    + Attributes (400 Response)
+
++ Response 404 (application/json)
+    + Attributes (404 Response)
 
 
 # Group Contracts > Physical
@@ -2068,6 +2120,13 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + TerminalId: ADEL (string)
 + TerminalDescription: `Santos-Santa Adelia` (string)
 + countryCode: BRA (string)
+
+## TransactionHeader (object)
++ DocumentReference: CN1600001 (required, string)
++ EDICode: 123abc (string)
++ InterfaceStatus: y (string)
++ PostedDate: 20160101 (number)
++ DocumentDate: 20160101 (number)
 
 ## UserAccount (object)
 + UserAccountId: JS (string)
