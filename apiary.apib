@@ -82,6 +82,7 @@ Client Ledger Account profile.
 |GroupAccountMember|chr20_group|`boolean`|1|||
 |HeadOfFamilyAccountCode|chr20_headcl|`string`|10|||
 |EDICode|chr20_ediaddr|`string`|50|||
+|<strong>Contact Details</strong>|
 |AddressLine1|chr20_addr1|`string`|60|||
 |AddressLine2|chr20_addr2|`string`|60|||
 |AddressLine3|chr20_addr3|`string`|60|||
@@ -91,14 +92,14 @@ Client Ledger Account profile.
 |EmailAddress|chr20_emailaddr|`string`|100|||
 |PhoneNumber|chr20_phoneno|`string`|40|||
 |FaxNumber|chr20_faxno|`string`|40|||
-|Client Limits|
-|ClientDateLimitsApproved|chr20_limit_date|`number`|0|||
+|<strong>Client Limits</strong>|
+|ClientDateLimitsApproved|chr20_limit_date|`datetime`|0|||
 |ClientLimitsCurrencyCode|chr20_clccy|`string`|3|||
 |ClientPaymentLimit|chr20_paylimit|`number`|18,8|||
 |ClientMarketDefaultRiskLimit|chr20_mktdefrisklimit|`number`|18,8|||
 |ClientCommitmentLimit|chr20_fwdlimit|`number`|18,8|||
-|Family Limits|
-|FamilyDateLimitsApproved|chr31_limit_date|`number`|0|||
+|<strong>Family Limits</strong>|
+|FamilyDateLimitsApproved|chr31_limit_date|`datetime`|0|||
 |FamilyLimitsCurrencyCode|chr31_clccy|`string`|3|||
 |FamilyPaymentLimit|chr31_paylimit|`number`|0|||
 |FamilyMarketDefaultRiskLimit|chr31_mktdefrisklimit|`number`|0|||
@@ -978,11 +979,11 @@ Orders (CallOffs) generated through EXPED
 |ContractType|phys01_contype|`string`|1|||
 |ContractDate|phys01_condate|`number`||DateTime||
 |DeliveryDate|phys01_startper|`number`||DateTime||
-|Department||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/nominal-reference-data/departments">Departments List</a> endpoint||
-|Counterparty||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/data-object-definitions/read-expedcalloffss">Account Header</a> object||
+|Department||`object`||see <a href="/#reference/nominal-reference-data/departments">Departments List</a> endpoint||
+|Counterparty||`object`||see <a href="/#reference/data-object-definitions/read-expedcalloffss">Account Header</a> object||
 |Memorandum|phys01_memo|`string`|4000|||
 |InternalMemo|phys01_memo2|`string`|4000|||
-|OrderStatus||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/physicals-reference-data/shippingstatus-list">Shipping Status</a> endpoint||
+|OrderStatus||`object`||see <a href="/#reference/physicals-reference-data/shippingstatus-list">Shipping Status</a> endpoint||
 |<strong>References</strong>|
 |ContractReference|phys01_contract|`string`|10|||
 |ClientReference|phys01_clref|`string`|40|||
@@ -991,16 +992,16 @@ Orders (CallOffs) generated through EXPED
 |DeliveryClientOrderNumber|phys01_delorderno|`string`|40|||
 |DeliveryClientSecondaryReference|phys01_delsecref|`string`|40|||
 |<strong>GoodsDetails</strong>|
-|Terminal||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/physicals-reference-data/terminals-list">Terminals List</a> endpoint||
-|Commodity||`object`||see <a href"http://docs.itasapiv2r2.apiary.io/#reference/physicals-reference-data/commodities-list">Commodies List</a> endpoint||
-|Sample||`object`||see <a href"http://docs.itasapiv2r2.apiary.io/#reference/physicals-reference-data/sample-list">Samples List</a> endpoint||
-|UnitOfMeasurement||`object`||see <a href"http://docs.itasapiv2r2.apiary.io/#reference/physicals-reference-data/weight-list">Weights List</a> endpoint||
+|Terminal||`object`||see <a href="/#reference/physicals-reference-data/terminals-list">Terminals List</a> endpoint||
+|Commodity||`object`||see <a href"/#reference/physicals-reference-data/commodities-list">Commodies List</a> endpoint||
+|Sample||`object`||see <a href"/#reference/physicals-reference-data/sample-list">Samples List</a> endpoint||
+|UnitOfMeasurement||`object`||see <a href"/#reference/physicals-reference-data/weight-list">Weights List</a> endpoint||
 |Quantity|phys01_conquan|`number`||||
-|PackingType||`object`||see <a href"http://docs.itasapiv2r2.apiary.io/#reference/physicals-reference-data/packingtype-list">PackingType List</a> endpoint||
+|PackingType||`object`||see <a href"/#reference/physicals-reference-data/packingtype-list">PackingType List</a> endpoint||
 |<strong>TransportDetails</strong>|
-|DeliveryClient||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/data-object-definitions/read-expedcalloffss">Account Header</a> object||
-|Haulier||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/data-object-definitions/read-expedcalloffss">Account Header</a> object||
-|Expeditor||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/data-object-definitions/read-expedcalloffss">Account Header</a> object||
+|DeliveryClient||`object`||see <a href="/#reference/data-object-definitions/read-expedcalloffss">Account Header</a> object||
+|Haulier||`object`||see <a href="/#reference/data-object-definitions/read-expedcalloffss">Account Header</a> object||
+|Expeditor||`object`||see <a href="/#reference/data-object-definitions/read-expedcalloffss">Account Header</a> object||
 |VehicleReference|phys01_vehicle|`string`|4|||
 |VehicleRegistration|phys01_vehiclereg|`string`|50|||
 |TrailerRegistration|phys01_trailerplate|`string`|50|||
@@ -1088,10 +1089,10 @@ Orders (CallOffs) specifically representing incoming goods.
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
 |ReleaseId|phys09_releasenr|`number`|0|||
-|ExpedOrderDetails||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/inventory-management/expedcalloff">ExpedCallOff</a> endpoint||
+|ExpedOrderDetails||`object`||see <a href="/#reference/inventory-management/expedcalloff">ExpedCallOff</a> endpoint||
 |PumpingMemo|phys09_pumpmemo|`string`|250|||
 |ProcessComplete|phys09_processed|`boolean`|1|||
-|TargetStockUnitCode||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/wip-reference-data/stockunit">StockUnit</a> endpoint||
+|TargetStockUnitCode||`object`||see <a href="/#reference/wip-reference-data/stockunit">StockUnit</a> endpoint||
 
 
 + Request
@@ -1114,10 +1115,10 @@ Orders (CallOffs) specifically representing outgoing goods.
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
 |ReleaseId|phys09_releasenr|`number`|0|||
-|ExpedOrderDetails||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/inventory-management/expedcalloff">ExpedCallOff</a> endpoint||
+|ExpedOrderDetails||`object`||see <a href="/#reference/inventory-management/expedcalloff">ExpedCallOff</a> endpoint||
 |PumpingMemo|phys09_pumpmemo|`string`|250|||
 |ProcessComplete|phys09_processed|`boolean`|1|||
-|SourceStockUnitCode||`[object]`|array of StockLoading objects|see <a href="http://docs.itasapiv2r2.apiary.io/#reference/inventory-management/stockloading">StockLoading</a> endpoint||
+|SourceStockUnitCode||`[object]`|array of StockLoading objects|see <a href="/#reference/inventory-management/stockloading">StockLoading</a> endpoint||
 
 + Request
     [AccessToken][]
@@ -1145,7 +1146,7 @@ Batch record information by Stock Unit
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
 |StockBatchId|cna70_batchid|`string`|20|||
-|StockUnitCode||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/wip-reference-data/stockunit">StockUnit</a> endpoint||
+|StockUnitCode||`object`||see <a href="/#reference/wip-reference-data/stockunit">StockUnit</a> endpoint||
 |BatchCreateDate|cna70_batchcreated|`string`|0|||
 |BatchText|cna70_text|`string`|1000|||
 
@@ -1205,7 +1206,7 @@ Information specific to the source of the goods generated during any movement (D
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
 |ReleaseId|phys10_releasenr|`number`|||Unique Key|
-|SourceStockUnitCode||`object`|||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/wip-reference-data/stockunit">StockUnit</a> endpoint||
+|SourceStockUnitCode||`object`|||see <a href="/#reference/wip-reference-data/stockunit">StockUnit</a> endpoint||
 |Weight|phys10_qty|`number`||||
 
 + Request
@@ -1294,7 +1295,7 @@ Information relating to the processing of the Order.
 |NetDeliveredWeight|phys09_delivered|`number`||||
 |LoadedDate|phys09_loadeddate|`number`||||
 |PumpedDate|phys09_pumpeddate|`number`||||
-|TargetStockUnit||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/wip-reference-data/stockunit">StockUnit</a> endpoint||
+|TargetStockUnit||`object`||see <a href="/#reference/wip-reference-data/stockunit">StockUnit</a> endpoint||
 |ArrivalDate|phys09_arrivaldate|`string`||||
 |ArrivalMemo|phys09_arrivalmemo|`string`|250|||
 |ArrivalWeight|phys09_arrivalweight|`number`||||
@@ -1380,12 +1381,12 @@ Orders specifically representing movements of goods between Stock Units (aka Man
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
 |ReleaseId|phys09_releasenr|`number`||||
-|TargetStockUnitCode||`object`||see <a href="http://docs.itasapiv2r2.apiary.io/#reference/wip-reference-data/stockunit">StockUnit</a> endpoint||
+|TargetStockUnitCode||`object`||see <a href="/#reference/wip-reference-data/stockunit">StockUnit</a> endpoint||
 |Quantity|phys09_loaded|`number`||||
 |TargetDate|phys09_targetdate|`string`||||
 |PumpingMemo|phys09_pumpmemo|`string`|250|||
 |ProcessComplete|phys09_processed|`boolean`|1|||
-|SourceStockUnitCode||`[object]`|array of StockLoading objects|see <a href="http://docs.itasapiv2r2.apiary.io/#reference/inventory-management/stockloading">StockLoading</a> endpoint||
+|SourceStockUnitCode||`[object]`|array of StockLoading objects|see <a href="/#reference/inventory-management/stockloading">StockLoading</a> endpoint||
 
 
 + Parameters
