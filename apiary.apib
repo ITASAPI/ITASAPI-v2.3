@@ -353,6 +353,39 @@ User-defined categorisation codes that can be applied to departments and bank ac
 + Response 404 (application/json)
     + Attributes (404 Response)
 
+## Vat Rate List [/ReferenceData/{TradingEntityId}/NominalLedger/VATRate/{Property}/{PropertyValue}]
+Codes and rates applied as part of any VAT/GST accounting practise.
+### List VAT Rates [GET]
+`New` endpoint in the 2.3 ITAS API relase.
+
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|VatRateId|cmy100_vatcode|`string`|2|||
+|VatRateDescription|cmy100_descr|`string`|40|||
+|VatRate|cmy100_vatrate|float|8|||
+|Status|cmy100_inactive|`string`|1|||
+
++ Request
+    [AccessToken][]
+
++ Parameters
+    + TradingEntityId (required, string, `AB`) 
+    + Property (optional, enum[string]) 
+       + Members
+            + VATRateId
+            + VATRate
+            +Status
+    + PropertyValue (optional, string, `AF`) 
+
++ Response 200 (application/json)
+    + Attributes (array [VATRate])
+
++ Response 400 (application/json)
+    + Attributes (400 BadPropertyResponse)
+
++ Response 404 (application/json)
+    + Attributes (404 Response)
+
 # Group Global Reference Data
 Global (system-wide) codes 
 
@@ -1685,8 +1718,14 @@ A multipurpose object used by several endpoints and with multiple source tables 
 ## Weight (object)
 + WeightId: GA (string)
 + WeightDescription: US Gallon (string)
-+ DocumentText: Text for documenta.(string)
++ DocumentText: Text for documentation.(string)
 + DecimalPlacesPresentation: 3 (number)
 + ConversionFactorToKilos: 2.7905 (number)
 + EdiCode: abc123 (string)
++ Status: F (string)
+
+## VATRate (object)
++ VatRateId: GS (required, string)
++ VatRateDescription: STANDARD RATE GB (required, string)
++ VatRate: 20 (number)
 + Status: F (string)
