@@ -1006,15 +1006,15 @@ Stock Account profile.
 # Group Accounting 
 Data Objects and endpoints providing access to accounting transactions generated through ITAS processes.
 
-## Transaction > Posted [/Accounting/{TradingEntityId}/Transaction/PostedTransaction/{DocRef}]
+## Transactions > Posted [/Accounting/{TradingEntityId}/Transaction/PostedTransaction/{DocRef}]
 Provides access to full accounting ledgers by Document Reference.
 ### Read Posted Transaction [GET]
 
-## Transaction > UnPosted [/Accounting/{TradingEntityId}/Transaction/UnPostedTransaction/{DocRef}]
+## Transactions > UnPosted [/Accounting/{TradingEntityId}/Transaction/UnPostedTransaction/{DocRef}]
 Provides access to financial transactions yet to be posted to the ledgers (either held-authorised or not authorised) again by Document Reference.
 ### Read Unposted Transaction [GET]
 
-## Transaction > Transaction Header [/Accounting/{TradingEntityId}/Transaction/TransactionHeader/{DocRef}]
+## Transactions > Transaction Header [/Accounting/{TradingEntityId}/Transaction/TransactionHeader/{DocRef}]
 Document summary information including properties specific to integration requirements.
 ### Read Transaction Header [GET]
 
@@ -1023,13 +1023,19 @@ Document summary information including properties specific to integration requir
 ### List Transaction Headers [GET]
 
 
-# Group Contract > Physicals
+# Group Contracts
 
-## Physical Trade Commissions []
+## Physical / Trade Commission [/Contract/{TradingEntityId}/Physical/PhysicalTradeCommission/{ContractId}]
+Broker commissions held against Physical Contracts.
+### Read Physical Trade Commission [GET]
 
-## Physical Trade Details []
+## Physical / Trade Commissions List [/Contract/{TradingEntityId}/Physical/PhysicalTradeCommission/{Property}/{PropertyValue}]
+Broker commissions held against Physical Contracts.
+### List Physical Trade Commissions [GET]
 
-## Physical Trade Shipments []
+## Physical / Trade Details []
+
+## Physical / Trade Shipments []
 
 
 # Group Inventory > Physicals > Order Scheduling
