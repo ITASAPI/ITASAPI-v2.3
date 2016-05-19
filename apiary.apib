@@ -1003,25 +1003,25 @@ Stock Account profile.
     + Attributes (404 Response)
 
 
-# Group Accounting 
+# Group Accounting > Transactions
 Data Objects and endpoints providing access to accounting transactions generated through ITAS processes.
 
-## Transactions > Posted [/Accounting/{TradingEntityId}/Transaction/PostedTransaction/{DocRef}]
+## Posted Transactions [/Accounting/{TradingEntityId}/Transaction/PostedTransaction/{DocRef}]
 Provides access to full accounting ledgers by Document Reference.
 ### Read Posted Transaction [GET]
 + Response 200 (application/json)
 
-## Transactions > UnPosted [/Accounting/{TradingEntityId}/Transaction/UnPostedTransaction/{DocRef}]
+## UnPosted Transactions [/Accounting/{TradingEntityId}/Transaction/UnPostedTransaction/{DocRef}]
 Provides access to financial transactions yet to be posted to the ledgers (either held-authorised or not authorised) again by Document Reference.
 ### Read Unposted Transaction [GET]
 + Response 200 (application/json)
 
-## Transactions > Transaction Header [/Accounting/{TradingEntityId}/Transaction/TransactionHeader/{DocRef}]
+## Transaction Header [/Accounting/{TradingEntityId}/Transaction/TransactionHeader/{DocRef}]
 Document summary information including properties specific to integration requirements.
 ### Read Transaction Header [GET]
 + Response 200 (application/json)
 
-## Transaction > Transaction Header List [/Accounting/{TradingEntityId}/Transaction/TransactionHeader/{Property}/{PropertyValue}]
+## Transaction Header List [/Accounting/{TradingEntityId}/Transaction/TransactionHeader/{Property}/{PropertyValue}]
 Document summary information including properties specific to integration requirements.
 ### List Transaction Headers [GET]
 + Response 200 (application/json)
