@@ -110,6 +110,11 @@ For Update requests the field `ClientAccountId` cannot be changed.
 ## ClientType List [/ReferenceData/{TradingEntityId}/ClientLedger/ClientType/{Property}/{PropertyValue}]
 User-defined list of codes used for classification purposes on Client Account profile.
 ### List ClientTypes [GET]
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|ClientTypeId|cmy107_code|`string`|1|||
+|ClientTypeDescription|cmy107_descr|`string`|50|||
+
 
 + Request
     [AccessToken][]
