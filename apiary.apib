@@ -1017,13 +1017,13 @@ Provides access to full accounting ledgers by Document Reference.
 |AccountLedgerType|txx_acctype|`string`|1|||
 |TransactionKey|composite key delimited by double pipe "&#124; &#124;" |`string`|255|`Composite Key`||
 |AccountCode||`object`||||
-|DocumentCurrencyCode||`object`||||
+|DocumentCurrency||`object`||||
 |AccountingPeriod|txx_period|`number`||||
 |PostingDate|txx_postdate|`number`||||
 |PostingTime|txx_posttime|`number`||||
 |DocumentDate|txx_ddate|`datetime`||||
 |ValueDate|txx_vdate|`datetime`||||
-|FunctionalCurrencyCode||`object`||||
+|FunctionalCurrency||`object`||||
 |AmountInDocumentCurrency|txx_amt|`number`||||
 |AmountInFunctionalCurrency|txx_namt|`number`||||
 |AmountInLocalCurrency|txx_namt2|`number`||||
@@ -1031,10 +1031,10 @@ Provides access to full accounting ledgers by Document Reference.
 |RateOfExchangeType|txx_roetype|`string`|1|||
 |WeightInQtyCode|txx_units|`number`||||
 |ContractReference|txx_contractno|`string`|10|||
-|ExpenseCode||`object`||||
-|DepartmentCode||`object`||||
-|PaymentTermCode||`object`||||
-|VatCode||`object`||||
+|Expense||`object`||||
+|Department||`object`||||
+|PaymentTerm||`object`||||
+|VatRate||`object`||||
 |ClientReference|txx_cliref|`string`|25|||
 |Narrative|txx_narr|`string`|30|||
 |MarketReference|txx_comod|`string`|8|||
@@ -1914,6 +1914,35 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + Status: F (string)
 
 ## PostedTransaction (object)
++ DocumentReference: 3DIECHES.P (string)
++ AccountLedgerType:  (string)
++ TransactionKey:  (string)
++ AccountCode (AccountHeader)
++ DocumentCurrencyCode (Currency)
++ AccountingPeriod:  (number)
++ PostingDate:  (number)
++ PostingTime:  (number)
++ DocumentDate:  (number)
++ ValueDate:  (number)
++ FunctionalCurrencyCode (Currency)
++ AmountInDocumentCurrency:  (number)
++ AmountInFunctionalCurrency:  (number)
++ AmountInLocalCurrency:  (number)
++ RateOfExchangeApplied:  (number)
++ RateOfExchangeType:  (string)
++ WeightInQtyCode:  (number)
++ ContractReference:  (string)
++ Expense (Expense)
++ Department (Department)
++ PaymentTerm (PaymentTerm)
++ VatRate (VATRate)
++ ClientReference:  (string)
++ Narrative:  (string)
++ MarketReference:  (string)
++ PromptMonth:  (number)
++ OptionType:  (string)
++ CommodityReference:  (string)
+
 
 ## Sample (object)
 + SampleId: 123abc (string)
