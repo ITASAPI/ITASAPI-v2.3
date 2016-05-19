@@ -577,6 +577,31 @@ Currency codes.
 + Response 404 (application/json)
     + Attributes (404 Response)
 
+## UserAccount List  [/ReferenceData/Global/UserAccount/{Property}/{PropertyValue}]
+ITAS User Account profiles.
+
+### List User Accounts [GET]
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|UserAccountId|prv40_inits|`string`|3|||
+|UserAccountName|prv40_username|`string`|255|||
+|UserAccountDescription|prv40_fullname|`string`|40|||
+
+
++ Request
+    [AccessToken][]
+
++ Response 200 (application/json)
+    + Attributes (array [UserAccount])
+
++ Response 400 (application/json)
+    + Attributes (400 BadPropertyResponse)
+
++ Response 404 (application/json)
+    + Attributes (404 Response)
+
+
+
 
 # Group Physicals Reference Data
 Codes relating to Physicals Trading and related endpoints
@@ -1898,6 +1923,12 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + TerminalId: ADEL (string)
 + TerminalDescription: `Santos-Santa Adelia` (string)
 + countryCode: BRA (string)
+
+## UserAccount (object)
++ UserAccountId:  (string)
++ UserAccountName:  (string)
++ UserAccountDescription:  (string)
+
 
 ## Vessel List (object)
 + VesselId: MV MERSEY FISHER (string)
