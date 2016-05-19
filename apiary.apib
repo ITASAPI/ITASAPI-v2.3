@@ -548,6 +548,13 @@ Country codes.
 + Request
     [AccessToken][]
 
++ Parameters
+    + TradingEntityId (required, string, `AB`) 
+    + Property (optional, enum[string]) 
+       + Members
+            + CountryId
+    + PropertyValue (optional, string, `UK`)
+
 + Response 200 (application/json)
     + Attributes (array [Country])
 
@@ -567,6 +574,13 @@ Currency codes.
 
 + Request
     [AccessToken][]
+
++ Parameters
+    + TradingEntityId (required, string, `AB`) 
+    + Property (optional, enum[string]) 
+       + Members
+            + CurrencyId
+    + PropertyValue (optional, string, `UK`)
 
 + Response 200 (application/json)
     + Attributes (array [Currency])
