@@ -249,7 +249,6 @@ For Update requests the field `ClientAccountId` is used as a check and cannot be
 + Response 404 (application/json)
     + Attributes (404 Response)
 
-
 ## ClientType List [/ReferenceData/{TradingEntityId}/ClientLedger/ClientType/{Property}/{PropertyValue}]
 User-defined list of codes used for classification purposes on Client Account profile.
 ### List ClientTypes [GET]
@@ -317,10 +316,8 @@ Codes used to segregate business sectors within a trading company, and can be ap
 + Response 404 (application/json)
     + Attributes (404 Response)
 
-
 ## Department [/ReferenceData/{TradingEntityId}/NominalLedger/Department/{DepartmentId}]
 Codes used to segregate business sectors within a trading company, and can be applied to contracts and accounting transactions.
-
 ### Read Department [GET]
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -383,7 +380,6 @@ Codes that are primarily used for accounting transaction analysis purposes.
 
 ## NominalAccount List [/ReferenceData/{TradingEntityId}/NominalLedger/NominalAccount/{Property}/{PropertyValue}]
 Nominal (General) Ledger Account profile.
-
 ### List NominalAccounts [GET]
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -418,7 +414,6 @@ Nominal (General) Ledger Account profile.
 
 ## NominalAccount [/ReferenceData/{TradingEntityId}/NominalLedger/NominalAccount/{NominalAccountId}]
 Nominal (General) Ledger Account profile.
-
 ### Read NominalAccount [GET]
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -534,6 +529,7 @@ Codes and rates applied as part of any VAT/GST accounting practise.
 + Response 404 (application/json)
     + Attributes (404 Response)
 
+
 # Group Global Reference Data
 Global (system-wide) codes 
 
@@ -591,7 +587,6 @@ Currency codes.
 
 ## UserAccount List  [/ReferenceData/Global/UserAccount/{Property}/{PropertyValue}]
 ITAS User Account profiles.
-
 ### List User Accounts [GET]
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -619,8 +614,6 @@ ITAS User Account profiles.
 
 + Response 404 (application/json)
     + Attributes (404 Response)
-
-
 
 
 # Group Physicals Reference Data
@@ -703,7 +696,6 @@ Contract Terms (aka Incoterms) usually setup to represent pre-defined, internati
 
 + Response 404 (application/json)
     + Attributes (404 Response)
-
 
 ## PackingType List [/ReferenceData/{TradingEntityId}/Physicals/PackingType/{Property}/{PropertyValue}]
 Codes used to describe the units of packing applied in physical contracts.
@@ -1066,7 +1058,6 @@ Orders (CallOffs) generated through EXPED
 + Response 404 (application/json)
     + Attributes (404 Response)
 
-
 ## ExpedCallOff List [/Inventory/{TradingEntityId}/Physicals/OrderScheduling/ExpedCallOff/{Property}/{PropertyValue}]
 Orders (CallOffs) generated through EXPED
 ### List ExpedCallOff [GET]
@@ -1125,7 +1116,6 @@ Orders (CallOffs) generated through EXPED
     
 + Response 404 (application/json)
     + Attributes (404 Response)
-
 
 ## DeliveryInOrder [/Inventory/{TradingEntityId}/Physicals/OrderScheduling/DeliveryInOrder/{ReleaseId}]
 Orders (CallOffs) specifically representing incoming goods.
@@ -1455,9 +1445,6 @@ Orders specifically representing movements of goods between Stock Units (aka Man
     + Attributes (404 Response)
 
 
-
-
-
 # Group Data Object Definitions
 List of re-usable Data Objects referenced as `object` types. Not that these endpoints are not accessable and only here for reference purposes.
 
@@ -1569,7 +1556,6 @@ A multipurpose object used by several endpoints and with multiple source tables 
     + FamilyMarketDefaultRiskLimit: 3000000 (number)
     + FamilyCommitmentLimit: 2750000 (number)
 
-
 ## ClientAccount CreateUpdate (object)
 + ClientAccountId: ABCDEF.P (required, string) 
 + Title: ACME Trading Company (required, string)
@@ -1663,7 +1649,6 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + EDICode: abc123 (string)
 + Status: F (string)
 
-
 ## Country (object)
 + CountryId: GB (string)
 + CountryDescription: Great Britain (string)
@@ -1707,7 +1692,6 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + ExpenseDescription: Contingency and Escalation (string)
 + EDICode: abc123 (string)
 + Status: F (string)
-
 
 ## ExpedCallOff (object)
 + ReleaseId: 123 (number)
@@ -1773,7 +1757,6 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + TrailerRegistration: YRS 386L (string)
 + EarlyLoadAllowed: `true` (boolean)
 + MaxLoadWeight: 123 (number)
-
 
 ## NominalAccount (object)
 + NominalAccountId: 1234.5678 (required, string)  
@@ -1910,7 +1893,6 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + ProcessComplete: true (boolean)
 + SourceStockUnitDetails  (array[StockLoading])
 
-
 ## StockUnit (object)
 + StockUnitId: 5100.MEP (string)
 + StockUnitDescription: `MEPACCRUE - East Africa Dept` (string)
@@ -1949,13 +1931,11 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + UserAccountName: JSMITH (string)
 + UserAccountDescription: Joseph Smith (string)
 
-
 ## Vessel List (object)
 + VesselId: MV MERSEY FISHER (string)
 + VesselDescription: Description of Vessel (string)
 + CountryCode: GB (string)
 + Status: F (string)
-
 
 ## Weight (object)
 + WeightId: GA (string)
