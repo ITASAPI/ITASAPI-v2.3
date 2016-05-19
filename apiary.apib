@@ -355,7 +355,7 @@ User-defined categorisation codes that can be applied to departments and bank ac
 
 ## Vat Rate List [/ReferenceData/{TradingEntityId}/NominalLedger/VATRate/{Property}/{PropertyValue}]
 Codes and rates applied as part of any VAT/GST accounting practise.
-### List VAT Rates [GET]
+### List VATRates [GET]
 `New` endpoint in the 2.3 ITAS API relase.
 
 |property|description|type|max length|notes|constraint|
@@ -477,9 +477,9 @@ Commodity/Product codes, used to identify goods.
 + Response 404 (application/json)
     + Attributes (404 Response)
 
-## Contract Terms List [/ReferenceData/{TradingEntityId}/Physicals/ContractTerm/{Property}/{PropertyValue}]
+## Contract Term List [/ReferenceData/{TradingEntityId}/Physicals/ContractTerm/{Property}/{PropertyValue}]
 Contract Terms (aka Incoterms) usually setup to represent pre-defined, internationally recognised, commercial terms of contract.
-### List Contract Term [GET]
+### List ContractTerms [GET]
 `New` endpoint in release 2.3
 
 |property|description|type|max length|notes|constraint|
@@ -509,7 +509,7 @@ Contract Terms (aka Incoterms) usually setup to represent pre-defined, internati
     + Attributes (400 BadPropertyResponse)
 
 + Response 404 (application/json)
-    + Attributes (404 Response)`
+    + Attributes (404 Response)
 
 
 ## PackingType List [/ReferenceData/{TradingEntityId}/Physicals/PackingType/{Property}/{PropertyValue}]
