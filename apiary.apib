@@ -1009,29 +1009,35 @@ Data Objects and endpoints providing access to accounting transactions generated
 ## Transactions > Posted [/Accounting/{TradingEntityId}/Transaction/PostedTransaction/{DocRef}]
 Provides access to full accounting ledgers by Document Reference.
 ### Read Posted Transaction [GET]
++ Response 200 (application/json)
 
 ## Transactions > UnPosted [/Accounting/{TradingEntityId}/Transaction/UnPostedTransaction/{DocRef}]
 Provides access to financial transactions yet to be posted to the ledgers (either held-authorised or not authorised) again by Document Reference.
 ### Read Unposted Transaction [GET]
++ Response 200 (application/json)
 
 ## Transactions > Transaction Header [/Accounting/{TradingEntityId}/Transaction/TransactionHeader/{DocRef}]
 Document summary information including properties specific to integration requirements.
 ### Read Transaction Header [GET]
++ Response 200 (application/json)
 
 ## Transaction > Transaction Header List[/Accounting/{TradingEntityId}/Transaction/TransactionHeader/{Property}/{PropertyValue}]
 Document summary information including properties specific to integration requirements.
 ### List Transaction Headers [GET]
++ Response 200 (application/json)
 
 
-# Group Contracts / Physical
+# Group Contracts > Physical
 
 ## Physical Trade Commission [/Contract/{TradingEntityId}/Physical/PhysicalTradeCommission/{ContractId}]
 Broker commissions held against Physical Contracts.
 ### Read Physical Trade Commission [GET]
++ Response 200 (application/json)
 
 ## Physical Trade Commissions List [/Contract/{TradingEntityId}/Physical/PhysicalTradeCommission/{Property}/{PropertyValue}]
 Broker commissions held against Physical Contracts.
 ### List Physical Trade Commissions [GET]
++ Response 200 (application/json)
 
 ## Physical Trade Details []
 
