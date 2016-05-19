@@ -5,7 +5,7 @@ VERSION: 2.3
 # ITAS API 2.3
 Release notes.
 
-## AccessToken [/AT]
+## AccessToken [/]
 Model Header containing AccessToken
 
 + Model 
@@ -249,6 +249,7 @@ For Update requests the field `ClientAccountId` is used as a check and cannot be
 + Response 404 (application/json)
     + Attributes (404 Response)
 
+
 ## ClientType List [/ReferenceData/{TradingEntityId}/ClientLedger/ClientType/{Property}/{PropertyValue}]
 User-defined list of codes used for classification purposes on Client Account profile.
 ### List ClientTypes [GET]
@@ -274,92 +275,6 @@ User-defined list of codes used for classification purposes on Client Account pr
 + Response 400 (application/json)
     + Attributes (400 BadPropertyResponse)
     
-+ Response 404 (application/json)
-    + Attributes (404 Response)
-
-
-# Group Global Reference Data
-Global (system-wide) codes 
-
-## Country List [/ReferenceData/Global/Country/{Property}/{PropertyValue}]
-Country codes.
-### List Countries [GET]
-|property|description|type|max length|notes|constraint|
-|--------|-----------|----|----------|-----|----------|
-|CountryId|boec_code|`string`|3|||
-|CountryDescription|boec_descr|`string`|50|||
-
-+ Request
-    [AccessToken][]
-
-+ Parameters
-    + Property (optional, enum[string]) 
-       + Members
-            + CountryId
-    + PropertyValue (optional, string, `UK`)
-
-+ Response 200 (application/json)
-    + Attributes (array [Country])
-
-+ Response 400 (application/json)
-    + Attributes (400 BadPropertyResponse)
-
-+ Response 404 (application/json)
-    + Attributes (404 Response)
-
-## Currency List [/ReferenceData/Global/Currency/{Property}/{PropertyValue}]
-Currency codes.
-### List Currencies [GET]
-|property|description|type|max length|notes|constraint|
-|--------|-----------|----|----------|-----|----------|
-|CurrencyId|fxr20_ccy|`string`|3|||
-|CurrencyDescription|fxr20_descr|`string`|20|||
-
-+ Request
-    [AccessToken][]
-
-+ Parameters
-    + Property (optional, enum[string]) 
-       + Members
-            + CurrencyId
-    + PropertyValue (optional, string, `UK`)
-
-+ Response 200 (application/json)
-    + Attributes (array [Currency])
-
-+ Response 400 (application/json)
-    + Attributes (400 BadPropertyResponse)
-
-+ Response 404 (application/json)
-    + Attributes (404 Response)
-
-## UserAccount List  [/ReferenceData/Global/UserAccount/{Property}/{PropertyValue}]
-ITAS User Account profiles.
-### List User Accounts [GET]
-|property|description|type|max length|notes|constraint|
-|--------|-----------|----|----------|-----|----------|
-|UserAccountId|prv40_inits|`string`|3|||
-|UserAccountName|prv40_username|`string`|255|||
-|UserAccountDescription|prv40_fullname|`string`|40|||
-
-
-+ Request
-    [AccessToken][]
-
-+ Parameters
-    + Property (optional, enum[string]) 
-       + Members
-            + UserAccountId
-            + UserAccountName
-            + Status
-    + PropertyValue (optional, string, `JSMITH`)
-
-+ Response 200 (application/json)
-    + Attributes (array [UserAccount])
-
-+ Response 400 (application/json)
-    + Attributes (400 BadPropertyResponse)
-
 + Response 404 (application/json)
     + Attributes (404 Response)
 
@@ -402,8 +317,10 @@ Codes used to segregate business sectors within a trading company, and can be ap
 + Response 404 (application/json)
     + Attributes (404 Response)
 
+
 ## Department [/ReferenceData/{TradingEntityId}/NominalLedger/Department/{DepartmentId}]
 Codes used to segregate business sectors within a trading company, and can be applied to contracts and accounting transactions.
+
 ### Read Department [GET]
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -466,6 +383,7 @@ Codes that are primarily used for accounting transaction analysis purposes.
 
 ## NominalAccount List [/ReferenceData/{TradingEntityId}/NominalLedger/NominalAccount/{Property}/{PropertyValue}]
 Nominal (General) Ledger Account profile.
+
 ### List NominalAccounts [GET]
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -500,6 +418,7 @@ Nominal (General) Ledger Account profile.
 
 ## NominalAccount [/ReferenceData/{TradingEntityId}/NominalLedger/NominalAccount/{NominalAccountId}]
 Nominal (General) Ledger Account profile.
+
 ### Read NominalAccount [GET]
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -615,6 +534,97 @@ Codes and rates applied as part of any VAT/GST accounting practise.
 + Response 404 (application/json)
     + Attributes (404 Response)
 
+# Group Global Reference Data
+Global (system-wide) codes 
+
+## Country List [/ReferenceData/Global/Country/{Property}/{PropertyValue}]
+Country codes.
+### List Countries [GET]
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|CountryId|boec_code|`string`|3|||
+|CountryDescription|boec_descr|`string`|50|||
+
++ Request
+    [AccessToken][]
+
++ Parameters
+    + TradingEntityId (required, string, `AB`) 
+    + Property (optional, enum[string]) 
+       + Members
+            + CountryId
+    + PropertyValue (optional, string, `UK`)
+
++ Response 200 (application/json)
+    + Attributes (array [Country])
+
++ Response 400 (application/json)
+    + Attributes (400 BadPropertyResponse)
+
++ Response 404 (application/json)
+    + Attributes (404 Response)
+
+## Currency List [/ReferenceData/Global/Currency/{Property}/{PropertyValue}]
+Currency codes.
+### List Currencies [GET]
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|CurrencyId|fxr20_ccy|`string`|3|||
+|CurrencyDescription|fxr20_descr|`string`|20|||
+
++ Request
+    [AccessToken][]
+
++ Parameters
+    + TradingEntityId (required, string, `AB`) 
+    + Property (optional, enum[string]) 
+       + Members
+            + CurrencyId
+    + PropertyValue (optional, string, `USD`)
+
++ Response 200 (application/json)
+    + Attributes (array [Currency])
+
++ Response 400 (application/json)
+    + Attributes (400 BadPropertyResponse)
+
++ Response 404 (application/json)
+    + Attributes (404 Response)
+
+## UserAccount List  [/ReferenceData/Global/UserAccount/{Property}/{PropertyValue}]
+ITAS User Account profiles.
+
+### List User Accounts [GET]
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|UserAccountId|prv40_inits|`string`|3|||
+|UserAccountName|prv40_username|`string`|255|||
+|UserAccountDescription|prv40_fullname|`string`|40|||
+
+
++ Request
+    [AccessToken][]
+
++ Parameters
+    + TradingEntityId (required, string, `AB`) 
+    + Property (optional, enum[string]) 
+       + Members
+            + UserAccountId
+            + UserAccountName
+            + Status
+    + PropertyValue (optional, string, `JSMITH`)
+
++ Response 200 (application/json)
+    + Attributes (array [UserAccount])
+
++ Response 400 (application/json)
+    + Attributes (400 BadPropertyResponse)
+
++ Response 404 (application/json)
+    + Attributes (404 Response)
+
+
+
 
 # Group Physicals Reference Data
 Codes relating to Physicals Trading and related endpoints
@@ -696,6 +706,7 @@ Contract Terms (aka Incoterms) usually setup to represent pre-defined, internati
 
 + Response 404 (application/json)
     + Attributes (404 Response)
+
 
 ## PackingType List [/ReferenceData/{TradingEntityId}/Physicals/PackingType/{Property}/{PropertyValue}]
 Codes used to describe the units of packing applied in physical contracts.
@@ -1003,84 +1014,8 @@ Stock Account profile.
     + Attributes (404 Response)
 
 
-# Group Accounting > Transactions
-Data Objects and endpoints providing access to accounting transactions generated through ITAS processes.
-
-## Posted Transaction [/Accounting/{TradingEntityId}/Transaction/PostedTransaction/{DocRef}]
-Provides access to full accounting ledgers by Document Reference.
-
-## UnPosted Transaction [/Accounting/{TradingEntityId}/Transaction/UnPostedTransaction/{DocRef}]
-Provides access to financial transactions yet to be posted to the ledgers (either held-authorised or not authorised) again by Document Reference.
-
-## Transaction Header [/Accounting/{TradingEntityId}/Transaction/TransactionHeader/{DocRef}]
-Document summary information including properties specific to integration requirements.
-
-## Transaction Header List[/Accounting/{TradingEntityId}/Transaction/TransactionHeader/{Property}/{PropertyValue}]
-Document summary information including properties specific to integration requirements.
-
-
-# Group Contract > Physicals
-
-## Physical Trade Commissions []
-
-## Physical Trade Details []
-
-## Physical Trade Shipments []
-
-
-# Group Inventory > Physicals > Order Scheduling
-Production Order scheduling services.
-
-## DeliveryInOrder [/Inventory/{TradingEntityId}/Physicals/OrderScheduling/DeliveryInOrder/{ReleaseId}]
-Orders (CallOffs) specifically representing incoming goods.
-### Read DeliveryInOrder [GET]
-
-|property|description|type|max length|notes|constraint|
-|--------|-----------|----|----------|-----|----------|
-|ReleaseId|phys09_releasenr|`number`|0|||
-|ExpedOrderDetails||`object`||see <a href="/#reference/inventory-management/expedcalloff">ExpedCallOff</a> endpoint||
-|PumpingMemo|phys09_pumpmemo|`string`|250|||
-|ProcessComplete|phys09_processed|`boolean`|1|||
-|TargetStockUnitCode||`object`||see <a href="/#reference/wip-reference-data/stockunit">StockUnit</a> endpoint||
-
-
-+ Request
-    [AccessToken][]
-    
-+ Parameters
-    + TradingEntityId (required, string, `AB`) 
-    + ReleaseId (required, number, `123`)
-
-+ Response 200 (application/json)
-    + Attributes (DeliveryInOrder)
-
-+ Response 404 (application/json)
-    + Attributes (404 Response)
-
-## DeliveryOutOrder [/Inventory/{TradingEntityId}/Physicals/OrderScheduling/DeliveryOutOrder/{ReleaseId}]
-Orders (CallOffs) specifically representing outgoing goods.
-### Read DeliveryOutOrder [GET]
-
-|property|description|type|max length|notes|constraint|
-|--------|-----------|----|----------|-----|----------|
-|ReleaseId|phys09_releasenr|`number`|0|||
-|ExpedOrderDetails||`object`||see <a href="/#reference/inventory-management/expedcalloff">ExpedCallOff</a> endpoint||
-|PumpingMemo|phys09_pumpmemo|`string`|250|||
-|ProcessComplete|phys09_processed|`boolean`|1|||
-|SourceStockUnitCode||`[object]`|array of StockLoading objects|see <a href="/#reference/inventory-management/stockloading">StockLoading</a> endpoint||
-
-+ Request
-    [AccessToken][]
-    
-+ Parameters
-    + TradingEntityId (required, string, `AB`) 
-    + ReleaseId (required, number, `123`)
-
-+ Response 200 (application/json)
-    + Attributes (DeliveryOutOrder)
-
-+ Response 404 (application/json)
-    + Attributes (404 Response)
+# Group Inventory Management
+Endpoints related to Stock Management, Order Scheduling & Order Processing 
 
 ## ExpedCallOff [/Inventory/{TradingEntityId}/Physicals/OrderScheduling/ExpedCallOffs/{ReleaseId}]
 Orders (CallOffs) generated through EXPED
@@ -1133,6 +1068,7 @@ Orders (CallOffs) generated through EXPED
 
 + Response 404 (application/json)
     + Attributes (404 Response)
+
 
 ## ExpedCallOff List [/Inventory/{TradingEntityId}/Physicals/OrderScheduling/ExpedCallOff/{Property}/{PropertyValue}]
 Orders (CallOffs) generated through EXPED
@@ -1193,45 +1129,63 @@ Orders (CallOffs) generated through EXPED
 + Response 404 (application/json)
     + Attributes (404 Response)
 
-## StockToStockOrder [/Inventory/{TradingEntityId}/Physicals/OrderScheduling/StockToStockOrder/{ReleaseId}]
-Orders specifically representing movements of goods between Stock Units (aka Manufacturing Orders).
-### Read StockToStockOrder [GET]
+
+## DeliveryInOrder [/Inventory/{TradingEntityId}/Physicals/OrderScheduling/DeliveryInOrder/{ReleaseId}]
+Orders (CallOffs) specifically representing incoming goods.
+### Read DeliveryInOrder [GET]
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
-|ReleaseId|phys09_releasenr|`number`||||
-|TargetStockUnitCode||`object`||see <a href="/#reference/wip-reference-data/stockunit">StockUnit</a> endpoint||
-|Quantity|phys09_loaded|`number`||||
-|TargetDate|phys09_targetdate|`string`||||
+|ReleaseId|phys09_releasenr|`number`|0|||
+|ExpedOrderDetails||`object`||see <a href="/#reference/inventory-management/expedcalloff">ExpedCallOff</a> endpoint||
 |PumpingMemo|phys09_pumpmemo|`string`|250|||
 |ProcessComplete|phys09_processed|`boolean`|1|||
-|SourceStockUnitCode||`[object]`|array of StockLoading objects|see <a href="/#reference/inventory-management/stockloading">StockLoading</a> endpoint||
+|TargetStockUnitCode||`object`||see <a href="/#reference/wip-reference-data/stockunit">StockUnit</a> endpoint||
 
 
++ Request
+    [AccessToken][]
+    
 + Parameters
     + TradingEntityId (required, string, `AB`) 
     + ReleaseId (required, number, `123`)
 
-+ Request (application/json)
-    + Header
-
-            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
-
-   + Attributes (StockMovement Flat)
-
 + Response 200 (application/json)
-    + Attributes (200 CreateResponse)
-
-+ Response 400 (application/json)
-    + Attributes (400 Response)
+    + Attributes (DeliveryInOrder)
 
 + Response 404 (application/json)
     + Attributes (404 Response)
 
+## DeliveryOutOrder [/Inventory/{TradingEntityId}/Physicals/OrderScheduling/DeliveryOutOrder/{ReleaseId}]
+Orders (CallOffs) specifically representing outgoing goods.
+### Read DeliveryOutOrder [GET]
 
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|ReleaseId|phys09_releasenr|`number`|0|||
+|ExpedOrderDetails||`object`||see <a href="/#reference/inventory-management/expedcalloff">ExpedCallOff</a> endpoint||
+|PumpingMemo|phys09_pumpmemo|`string`|250|||
+|ProcessComplete|phys09_processed|`boolean`|1|||
+|SourceStockUnitCode||`[object]`|array of StockLoading objects|see <a href="/#reference/inventory-management/stockloading">StockLoading</a> endpoint||
 
-# Group Inventory > Physicals > Stock Management
-Management activities of Stock Units (where represented by WIP Accounts).
++ Request
+    [AccessToken][]
+    
++ Parameters
+    + TradingEntityId (required, string, `AB`) 
+    + ReleaseId (required, number, `123`)
+
++ Response 200 (application/json)
+    + Attributes (DeliveryOutOrder)
+
++ Response 404 (application/json)
+    + Attributes (404 Response)
+
+## MarkOrderAsProcessed [/Inventory/{TradingEntityId}/Physicals/OrderProcessing/MarkOrderAsProcessed/{ReleaseId}]
+`TBD`
+### Update MarkOrderAsProcessed [GET]
+
++ Response 200 (application/json)
 
 ## StockBatch [/Inventory/{TradingEntityId}/Physicals/StockManagement/StockBatch/{StockBatchId}]
 Batch record information by Stock Unit
@@ -1292,16 +1246,6 @@ Batch record information by Stock Unit.
     
 + Response 404 (application/json)
     + Attributes (404 Response)
-
-
-# Group Inventory > Physicals > Stock Processing
-Production Order processing services.
-
-## MarkOrderAsProcessed [/Inventory/{TradingEntityId}/Physicals/OrderProcessing/MarkOrderAsProcessed/{ReleaseId}]
-`TBD`
-### Update MarkOrderAsProcessed [GET]
-
-+ Response 200 (application/json)
 
 ## StockLoading [/Inventory/{TradingEntityId}/Physicals/OrderProcessing/StockLoading/{ReleaseId}]
 Information specific to the source of the goods generated during any movement (Delivery Out or Stock to Stock).
@@ -1478,6 +1422,43 @@ Information relating to the processing of the Order.
 + Response 404 (application/json)
     + Attributes (404 Response)
 
+## StockToStockOrder [/Inventory/{TradingEntityId}/Physicals/OrderScheduling/StockToStockOrder/{ReleaseId}]
+Orders specifically representing movements of goods between Stock Units (aka Manufacturing Orders).
+### Read StockToStockOrder [GET]
+
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|ReleaseId|phys09_releasenr|`number`||||
+|TargetStockUnitCode||`object`||see <a href="/#reference/wip-reference-data/stockunit">StockUnit</a> endpoint||
+|Quantity|phys09_loaded|`number`||||
+|TargetDate|phys09_targetdate|`string`||||
+|PumpingMemo|phys09_pumpmemo|`string`|250|||
+|ProcessComplete|phys09_processed|`boolean`|1|||
+|SourceStockUnitCode||`[object]`|array of StockLoading objects|see <a href="/#reference/inventory-management/stockloading">StockLoading</a> endpoint||
+
+
++ Parameters
+    + TradingEntityId (required, string, `AB`) 
+    + ReleaseId (required, number, `123`)
+
++ Request (application/json)
+    + Header
+
+            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
+
+   + Attributes (StockMovement Flat)
+
++ Response 200 (application/json)
+    + Attributes (200 CreateResponse)
+
++ Response 400 (application/json)
+    + Attributes (400 Response)
+
++ Response 404 (application/json)
+    + Attributes (404 Response)
+
+
+
 
 
 # Group Data Object Definitions
@@ -1591,6 +1572,7 @@ A multipurpose object used by several endpoints and with multiple source tables 
     + FamilyMarketDefaultRiskLimit: 3000000 (number)
     + FamilyCommitmentLimit: 2750000 (number)
 
+
 ## ClientAccount CreateUpdate (object)
 + ClientAccountId: ABCDEF.P (required, string) 
 + Title: ACME Trading Company (required, string)
@@ -1684,6 +1666,7 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + EDICode: abc123 (string)
 + Status: F (string)
 
+
 ## Country (object)
 + CountryId: GB (string)
 + CountryDescription: Great Britain (string)
@@ -1727,6 +1710,7 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + ExpenseDescription: Contingency and Escalation (string)
 + EDICode: abc123 (string)
 + Status: F (string)
+
 
 ## ExpedCallOff (object)
 + ReleaseId: 123 (number)
@@ -1792,6 +1776,7 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + TrailerRegistration: YRS 386L (string)
 + EarlyLoadAllowed: `true` (boolean)
 + MaxLoadWeight: 123 (number)
+
 
 ## NominalAccount (object)
 + NominalAccountId: 1234.5678 (required, string)  
@@ -1928,6 +1913,7 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + ProcessComplete: true (boolean)
 + SourceStockUnitDetails  (array[StockLoading])
 
+
 ## StockUnit (object)
 + StockUnitId: 5100.MEP (string)
 + StockUnitDescription: `MEPACCRUE - East Africa Dept` (string)
@@ -1966,11 +1952,13 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + UserAccountName: JSMITH (string)
 + UserAccountDescription: Joseph Smith (string)
 
+
 ## Vessel List (object)
 + VesselId: MV MERSEY FISHER (string)
 + VesselDescription: Description of Vessel (string)
 + CountryCode: GB (string)
 + Status: F (string)
+
 
 ## Weight (object)
 + WeightId: GA (string)
