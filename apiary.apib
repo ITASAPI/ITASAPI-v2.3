@@ -591,6 +591,15 @@ ITAS User Account profiles.
 + Request
     [AccessToken][]
 
++ Parameters
+    + TradingEntityId (required, string, `AB`) 
+    + Property (optional, enum[string]) 
+       + Members
+            + UserAccountId
+            + UserAccountName
+            + Status
+    + PropertyValue (optional, string, `JSMITH`)
+
 + Response 200 (application/json)
     + Attributes (array [UserAccount])
 
@@ -1925,9 +1934,9 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + countryCode: BRA (string)
 
 ## UserAccount (object)
-+ UserAccountId:  (string)
-+ UserAccountName:  (string)
-+ UserAccountDescription:  (string)
++ UserAccountId: JS (string)
++ UserAccountName: JSMITH (string)
++ UserAccountDescription: Joseph Smith (string)
 
 
 ## Vessel List (object)
