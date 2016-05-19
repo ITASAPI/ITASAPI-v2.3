@@ -63,7 +63,7 @@ Client Ledger Account profile
     + Attributes (404 Response)
 
 ### Create ClientAccount [POST]
-Create new Client Account
+
 + Request (application/json)
     + Header
 
@@ -476,6 +476,41 @@ Commodity/Product codes, used to identify goods.
 
 + Response 404 (application/json)
     + Attributes (404 Response)
+
+## Contract Terms List [/ReferenceData/{TradingEntityId}/Physicals/ContractTerm/{Property}/{PropertyValue}]
+Contract Terms (aka Incoterms) usually setup to represent pre-defined, internationally recognised, commercial terms of contract.
+### List Contract Term [GET]
+`New` endpoint in release 2.3
+
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|ContractTermId|cmy14_cterms|`string`|8|||
+|ContractTermDescription|cmy14_descr|`string`|50|||
+|DocumentText|cmy14_text|`string`|4000|||
+|EDICode|master_edicode|`string`|50|||
+|Status|cmy14_inactive|`string`|1|||
+
++ Request
+    [AccessToken][]
+
++ Parameters
+    + TradingEntityId: AB (required, string)
+    + Property (optional, enum[string])
+       + Members
+            + ContractTermId (optional, string) 
+            + EDICode (optional, string)
+            + Status (optional, string)
+    + PropertyValue (optional, string, `O`)
+
++ Response 200 (application/json)
+    + Attributes (array[ContractTerm])
+    
++ Response 400 (application/json)
+    + Attributes (400 BadPropertyResponse)
+
++ Response 404 (application/json)
+    + Attributes (404 Response)`
+
 
 ## PackingType List [/ReferenceData/{TradingEntityId}/Physicals/PackingType/{Property}/{PropertyValue}]
 Codes used to describe the units of packing applied in physical contracts.
@@ -1427,6 +1462,14 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + EmailAddress: info@abcdef.com (string)
 + PhoneNumber: 01234 567890 (string)
 + FaxNumber: 01234 567890 (string)
+
+## ContractTerm (object)
++ ContractTermId: COL (required, string)
++ ContractTermDescription: Colletion (required, string)
++ DocumentText: Document text example (string)
++ EDICode: abc123 (string)
++ Status: F (string)
+
 
 ## Country (object)
 + CountryId: GB (string)
