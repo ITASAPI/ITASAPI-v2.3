@@ -1179,19 +1179,87 @@ Document summary information including properties specific to integration requir
 
 # Group Contracts > Physical
 
-## Physical Trade [/Contract/{TradingEntityId}/Physical/PhysicalTrade/{ContratId}]
+## Physical Trade [/Contract/{TradingEntityId}/Physical/PhysicalTrade/{ContractId}]
 Principle Physical Contract (agreement) details
 ### List Physical Trade  [GET]
+`New` in release 2.3
+
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+
+
++ Request
+    [AccessToken][]
+    
++ Parameters
+    + TradingEntityId (required, string, `AB`) 
+    + ContractId (required, string, `P40000.000`)
+
 + Response 200 (application/json)
+    + Attributes (PhysicalTradeCommission)
+
++ Response 400 (application/json)
+    + Attributes (400 Response)
+
++ Response 404 (application/json)
+    + Attributes (404 Response)
 
 ## Physical Trade List [/Contract/{TradingEntityId}/Physical/PhysicalTrade/{Property}/{PropertyValue}]
 List of Principle Physical Contracts (agreements)
 ### List Physical Trades  [GET]
+`New` in release 2.3
+
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|ContractId|phys01_contract|`string`|10||`KEY`|
+|ContractType|phys01_contype|`string`|1||‘P’, ‘S’|
+|ContractDate|phys01_condate|`datetime`||||
+|DepartmentCode|phys01_dept|`string`|4|||
+|TraderCode|phys01_trader|`string`|3|||
+|ClientReference|phys01_clref|`string`|40|||
+|BuyerAccountCode|phys01_buyer|`string`|10|||
+|SellerAccountCode|phys01_seller|`string`|10|||
+|CounterpartyCode|phys01_counterparty|`string`|10|||
+|CommodityFullCode|phys01_commod|`string`|3|||
+|PaymentTermCode|phys01_payterms|`string`|8|||
+|ContractTermCode|phys01_conterms|`string`|8|||
+|ContractTermPortCode|phys01_contermsport|`string`|8|||
+|UnitOfMeasurementCode|phys01_wtcode|`string`|4|||
+|OriginalContractQuantity|phys01_origquan|`number`||||
+|CurrentContractQuantity|phys01_conquan|`number`||||
+|ContractStatus|phys01_status|`string`|1||‘O’, ‘C’, ‘Q’|
+|ContractApproved|phys01_approved|`boolean`|1|||
+
+
++ Request
+    [AccessToken][]
+
++ Parameters
+    + TradingEntityId: AB (required, string) 
+    + Property (optional, enum[string])  
+       + Members
+            + ContractId (optional, string) 
+            + DepartmentCode (optional, string)
+            + TraderCode (optional, string)
+            + CounterpartyCode (optional, string)
+            + ContractStatus (optional, string)
+            + ContractApproved (optional, string)
+    + PropertyValue (optional, string, `P40000.000`)
+
 + Response 200 (application/json)
+    + Attributes (array [PhysicalTradeCommission List])
+
++ Response 400 (application/json)
+    + Attributes (400 Response)
+
++ Response 404 (application/json)
+    + Attributes (404 Response)
 
 ## Physical Trade Commission [/Contract/{TradingEntityId}/Physical/PhysicalTradeCommission/{ContractId}]
 Broker commissions held against Physical Contracts.
 ### Read Physical Trade Commission [GET]
+`New` in release 2.3
+
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
 |ContractId|phys02_contract|`string`|10|||
@@ -1904,7 +1972,7 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + DocumentText: Org Golden S1 45 ICUMSA (string)
 + CountryCode: MAL (string)
 + EDICode: ABC1234 (string)
-+ Status: F (string)
++ Status: F (string) 
 
 ## ContactDetails (object)
 + AddressLine1: Address Line #1 (string)
