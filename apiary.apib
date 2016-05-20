@@ -1211,15 +1211,15 @@ List of Principle Physical Contracts (agreements)
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
-|ContractId|phys01_contract|`string`|10||`KEY`|
+|ContractId|phys01_contract|`string`|10|Filter|`KEY`|
 |ContractType|phys01_contype|`string`|1||‘P’, ‘S’|
 |ContractDate|phys01_condate|`datetime`||||
-|DepartmentCode|phys01_dept|`string`|4|||
-|TraderCode|phys01_trader|`string`|3|||
+|DepartmentCode|phys01_dept|`string`|4|Filter||
+|TraderCode|phys01_trader|`string`|3|Filter||
 |ClientReference|phys01_clref|`string`|40|||
 |BuyerAccountCode|phys01_buyer|`string`|10|||
 |SellerAccountCode|phys01_seller|`string`|10|||
-|CounterpartyCode|phys01_counterparty|`string`|10|||
+|CounterpartyCode|phys01_counterparty|`string`|10|Filter||
 |CommodityFullCode|phys01_commod|`string`|3|||
 |PaymentTermCode|phys01_payterms|`string`|8|||
 |ContractTermCode|phys01_conterms|`string`|8|||
@@ -1227,8 +1227,9 @@ List of Principle Physical Contracts (agreements)
 |UnitOfMeasurementCode|phys01_wtcode|`string`|4|||
 |OriginalContractQuantity|phys01_origquan|`number`||||
 |CurrentContractQuantity|phys01_conquan|`number`||||
-|ContractStatus|phys01_status|`string`|1||‘O’, ‘C’, ‘Q’|
-|ContractApproved|phys01_approved|`boolean`|1|||
+|ContractStatus|phys01_status|`string`|1|Filter|‘O’, ‘C’, ‘Q’|
+|ContractApproved|phys01_approved|`boolean`|1|Filter||
+
 
 
 + Request
