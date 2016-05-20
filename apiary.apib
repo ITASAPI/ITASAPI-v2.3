@@ -1196,7 +1196,7 @@ Principle Physical Contract (agreement) details
     + ContractId (required, string, `P40000.000`)
 
 + Response 200 (application/json)
-    + Attributes (PhysicalTradeCommission)
+    + Attributes (PhysicalTrade)
 
 + Response 400 (application/json)
     + Attributes (400 Response)
@@ -1248,7 +1248,7 @@ List of Principle Physical Contracts (agreements)
     + PropertyValue (optional, string, `P40000.000`)
 
 + Response 200 (application/json)
-    + Attributes (array [PhysicalTradeCommission List])
+    + Attributes (array [PhysicalTrade List])
 
 + Response 400 (application/json)
     + Attributes (400 Response)
@@ -2139,6 +2139,12 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + DocumentText: Text to be used in the sameple document.  (string)
 + EDICode: abc123 (string)
 + Status: F (string)
+
+## PhysicalTrade (object)
++ ContractId: P00004.000 (string)
+
+## PhysicalTrade List(object)
++ ContractId: P00004.000 (string)
 
 ## PhysicalTradeCommission (object)
 + ContractId: P00004.000 (string)
