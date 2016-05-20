@@ -1006,8 +1006,8 @@ Stock Account profile.
 # Group Accounting > Transactions
 Data Objects and endpoints providing access to accounting transactions generated through ITAS processes.
 
-## Posted Transactions [/Accounting/{TradingEntityId}/Transaction/PostedTransaction/{DocRef}]
-Provides access to full accounting ledgers by Document Reference.
+## Posted Transaction [/Accounting/{TradingEntityId}/Transaction/PostedTransaction/{DocRef}]
+Provides access to full accounting ledger by Document Reference.
 ### Read Posted Transaction [GET]
 `New` in release 2.3
 
@@ -1059,8 +1059,8 @@ Provides access to full accounting ledgers by Document Reference.
     + Attributes (404 Response)
 
 
-## UnPosted Transactions [/Accounting/{TradingEntityId}/Transaction/UnPostedTransaction/{DocRef}]
-Provides access to financial transactions yet to be posted to the ledgers (either held-authorised or not authorised) again by Document Reference.
+## UnPosted Transaction [/Accounting/{TradingEntityId}/Transaction/UnPostedTransaction/{DocRef}]
+Provides access to financial transaction details yet to be posted to the ledgers (either held-authorised or not authorised) by Document Reference.
 ### Read Unposted Transaction [GET]
 `New` in release 2.3
 
@@ -1100,7 +1100,7 @@ Provides access to financial transactions yet to be posted to the ledgers (eithe
     + DocRef (required, string, `CN1600001`)
 
 + Response 200 (application/json)
-    + Attributes (array [UnPostedTransaction])
+    + Attributes (UnPostedTransaction)
 
 + Response 400 (application/json)
     + Attributes (400 Response)
