@@ -1070,7 +1070,7 @@ Provides access to financial transactions yet to be posted to the ledgers (eithe
 |AccountLedgerType|dhlxx_ledger|`string`|1||‘C’, ‘N’, ‘K’|
 |DocumentDate|dhl21_ddate|`datetime`||||
 |ValueDate|dhl21_vdate|`datetime`||||
-|AccountCode|dhlxx_account|`string`|11|||
+|Account||`object`||||
 |DocumentCurrency||`object`||||
 |AmountInDocumentCurrency|dhlxx_amount|`number`||||
 |FunctionalCurrency||`object`||||
@@ -2280,7 +2280,7 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + RateOfExchangeType: M (string)
 + WeightInQtyCode: 11629.00 (number)
 + ContractReference: SC00338 (string)
-+ ExpenseCode (Expense List)
++ Expense (Expense List)
 + Department (Department)
 + PaymentTerm (PaymentTerm)
 + VatRate (VATRate)
@@ -2289,7 +2289,7 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + MarketReference: 123abc (string)
 + PromptMonth: 5 (number)
 + OptionType: C (string)
-+ CommodityReference: referenceId (string)
++ CommodityReference: reference info (string)
 
 
 ## UserAccount (object)
