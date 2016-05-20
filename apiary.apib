@@ -1062,20 +1062,34 @@ Provides access to full accounting ledgers by Document Reference.
 ## UnPosted Transactions [/Accounting/{TradingEntityId}/Transaction/UnPostedTransaction/{DocRef}]
 Provides access to financial transactions yet to be posted to the ledgers (either held-authorised or not authorised) again by Document Reference.
 ### Read Unposted Transaction [GET]
-+ Response 200 (application/json)
-
-## Transaction Header [/Accounting/{TradingEntityId}/Transaction/TransactionHeader/{DocRef}]
-Document summary information including properties specific to integration requirements.
-### Update Transaction Header [PUT]
 `New` in release 2.3
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
-|DocumentReference|xtx01_docref|`string`|9||required|
-|EDICode|xtx01_axdocref|`string`|25|||
-|InterfaceStatus|xtx01_senttocashman|`string`|1|||
-|PostedDate|xtx01_postdatetime|`string`||||
-|DocumentDate|xtx01_txxddate|`datetime`||||
+|DocumentReference|dhl21_docref|`string`|9|||
+|AccountLedgerType|dhlxx_ledger|`string`|1||‘C’, ‘N’, ‘K’|
+|DocumentDate|dhl21_ddate|`datetime`||||
+|ValueDate|dhl21_vdate|`datetime`||||
+|AccountCode|dhlxx_account|`string`|11|||
+|DocumentCurrency||`object`||||
+|AmountInDocumentCurrency|dhlxx_amount|`number`||||
+|FunctionalCurrency||`object`||||
+|AmountInFunctionalCurrency|dhlxx_namt|`number`||||
+|AmountInLocalCurrency|dhlxx_namt2|`number`||||
+|RateOfExchangeApplied|dhl21_roe|`number`|18,8|||
+|RateOfExchangeType|dhl21_roetype|`string`|1||‘M’, ‘D’|
+|WeightInQtyCode|dhlxx_qty|`number`||||
+|ContractReference|dhlxx_contractno|`string`|10|||
+|Expense||`object`||||
+|Department||`object`||||
+|PaymentTerm||`object`||||
+|VatRate||`object`||||
+|ClientReference|dhlxx_cliref|`string`|25|||
+|Narrative|dhlxx_narr|`string`|30|||
+|MarketReference|dhl21_comod|`string`|8|||
+|PromptMonth|dhl21_prompt|`number`||||
+|OptionType|dhl21_extype|`string`|1||‘C’, ‘P’, ‘ ‘|
+|CommodityReference|dhlxx_component|`string`|15|||
 
 + Request (application/json)
     + Header
@@ -1090,6 +1104,37 @@ Document summary information including properties specific to integration requir
 
 + Response 201 (application/json)
     + Attributes (201 UpdateResponse)
+
++ Response 400 (application/json)
+    + Attributes (400 Response)
+
++ Response 404 (application/json)
+    + Attributes (404 Response)
+
+
+
+## Transaction Header [/Accounting/{TradingEntityId}/Transaction/TransactionHeader/{DocRef}]
+Document summary information including properties specific to integration requirements.
+### Update Transaction Header [PUT]
+`New` in release 2.3
+
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|DocumentReference|xtx01_docref|`string`|9||required|
+|EDICode|xtx01_axdocref|`string`|25|||
+|InterfaceStatus|xtx01_senttocashman|`string`|1|||
+|PostedDate|xtx01_postdatetime|`string`||||
+|DocumentDate|xtx01_txxddate|`datetime`||||
+
++ Request
+    [AccessToken][]
+    
++ Parameters
+    + TradingEntityId (required, string, `AB`) 
+    + DocRef (required, string, `CN1600001`)
+
++ Response 200 (application/json)
+    + Attributes (UnPostedTransaction)
 
 + Response 400 (application/json)
     + Attributes (400 Response)
@@ -2087,6 +2132,8 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + OptionType: C (string)
 + CommodityReference: 1bc123 (string)
 
+## UnPostedTransaction (object)
++ DocumentReference: 3DIECHES.P (string)
 
 ## Sample (object)
 + SampleId: 123abc (string)
