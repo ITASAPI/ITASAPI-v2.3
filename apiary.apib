@@ -14,255 +14,6 @@ VERSION: 2.3
 <div>~ Endpoints updated in this release: none.</div> 
 <div>** ends ** </div>
 
-# Group Inventory/Physicals/Stock Management
-Management activities of Stock Units (where represented by WIP Accounts).
-
-## StockBatch [/Inventory/{TradingEntityId}/Physicals/StockManagement/StockBatch/{StockBatchId}]
-Batch record information by Stock Unit
-### Read StockBatch [GET]
-
-|property|description|type|max length|notes|constraint|
-|--------|-----------|----|----------|-----|----------|
-|StockBatchId|cna70_batchid|`string`|20|||
-|StockUnitCode||`object`||see <a href="/#reference/wip-reference-data/stockunit">StockUnit</a> endpoint||
-|BatchCreateDate|cna70_batchcreated|`string`|0|||
-|BatchText|cna70_text|`string`|1000|||
-
-
-+ Request
-    [AccessToken][]
-    
-+ Parameters
-    + TradingEntityId (required, string, `AB`) 
-    + StockBatchId (required, string, `abc123`)
-
-+ Response 200 (application/json)
-    + Attributes (StockBatch)
-
-+ Response 400 (application/json)
-    + Attributes (400 Response)
-    
-+ Response 404 (application/json)
-    + Attributes (404 Response)
-
-## StockBatch List [/Inventory/{TradingEntityId}/Physicals/StockManagement/StockBatch/{Property}/{PropertyValue}]
-Batch record information by Stock Unit.
-### List StockBatches [GET]
-
-|property|description|type|max length|notes|constraint|
-|--------|-----------|----|----------|-----|----------|
-|StockBatchId|cna70_batchid|`string`|20|||
-|StockUnitCode|cna70_acc|`string`|11|||
-|BatchCreateDate|cna70_batchcreated|`string`|0|||
-|BatchText|cna70_text|`string`|1000|||
-
-
-+ Request
-    [AccessToken][]
-    
-+ Parameters
-    + TradingEntityId (required, string, `AB`) 
-    + Property (optional, enum[string]) ... identify property name to filter by 
-       + Members
-            + StockBatchId 
-            + StockUnitCode
-    + PropertyValue (optional, string, `abc123`) ... required if property specified.
-
-+ Response 200 (application/json)
-    + Attributes (StockBatch List)
-
-+ Response 400 (application/json)
-    + Attributes (400 BadPropertyResponse)
-    
-+ Response 404 (application/json)
-    + Attributes (404 Response)
-
-
-# Group Inventory/Physicals/Stock Processing
-Production Order processing services.
-
-## MarkOrderAsProcessed [/Inventory/{TradingEntityId}/Physicals/OrderProcessing/MarkOrderAsProcessed/{ReleaseId}]
-`TBD`
-### Update MarkOrderAsProcessed [GET]
-
-+ Response 200 (application/json)
-
-## StockLoading [/Inventory/{TradingEntityId}/Physicals/OrderProcessing/StockLoading/{ReleaseId}]
-Information specific to the source of the goods generated during any movement (Delivery Out or Stock to Stock).
-### Read StockLoading [GET]
-
-|property|description|type|max length|notes|constraint|
-|--------|-----------|----|----------|-----|----------|
-|ReleaseId|phys10_releasenr|`number`|||Unique Key|
-|SourceStockUnitCode||`object`|||see <a href="/#reference/wip-reference-data/stockunit">StockUnit</a> endpoint||
-|Weight|phys10_qty|`number`||||
-
-+ Request
-    [AccessToken][]
-
-+ Parameters
-    + TradingEntityId (required, string, `AB`) 
-    + ReleaseId (required, number, `123`)
-
-+ Response 200 (application/json)
-    + Attributes (StockLoading)
-    
-+ Response 400 (application/json)
-    + Attributes (400 Response)
-    
-+ Response 404 (application/json)
-    + Attributes (404 Response)
-
-### Create StockLoading [POST]
-
-|property|description|type|max length|notes|constraint|
-|--------|-----------|----|----------|-----|----------|
-|ReleaseId|phys10_releasenr|`number`||required|Unique Key|
-|SourceStockUnitCode|phys10_tank|`string`|11|required|must exist in xx_cna50|
-|Weight|phys10_qty|`number`||required||
-
-+ Parameters
-    + TradingEntityId (required, string, `AB`) 
-    + ReleaseId (required, number, `123`)
-
-+ Request (application/json)
-    + Header
-
-            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
-
-    + Attributes (array [StockLoadingFlat])
-
-+ Response 200 (application/json)
-    + Attributes (200 CreateResponse)
-
-+ Response 400 (application/json)
-    + Attributes (400 Response)
-
-+ Response 404 (application/json)
-    + Attributes (404 Response)
-
-### Update StockLoading [PUT]
-Please note that sending an update will remove any current records for the TradingEntity/ReleaseNr combination and replace them with records sent.
-
-|property|description|type|max length|notes|constraint|
-|--------|-----------|----|----------|-----|----------|
-|ReleaseId|phys10_releasenr|`number`||required|Unique Key|
-|SourceStockUnitCode|phys10_tank|`string`|11|required|must exist in xx_cna50|
-|Weight|phys10_qty|`number`||required||
-
-+ Parameters
-    + TradingEntityId (required, string, `AB`) 
-    + ReleaseId (required, number, `123`)
-
-+ Request (application/json)
-    + Header
-
-            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
-
-    + Attributes (array [StockLoadingFlat])
-
-+ Response 201 (application/json)
-    + Attributes (201 UpdateResponse)
-
-+ Response 400 (application/json)
-    + Attributes (400 Response)
-
-+ Response 404 (application/json)
-    + Attributes (404 Response)
-
-## StockMovement [/Inventory/{TradingEntityId}/Physicals/OrderProcessing/StockMovement/{ReleaseId}]
-Information relating to the processing of the Order. 
-### Read StockMovement [GET]
-
-|property|description|type|max length|notes|constraint|
-|--------|-----------|----|----------|-----|----------|
-|ReleaseId|phys09_releasenr|`number`||||
-|OrderAcknowledged|phys09_sent|`string`|1|||
-|NetLoadedWeight|phys09_loaded|`number`||||
-|NetPumpedWeight|phys09_pumped|`number`||||
-|NetDeliveredWeight|phys09_delivered|`number`||||
-|LoadedDate|phys09_loadeddate|`number`||||
-|PumpedDate|phys09_pumpeddate|`number`||||
-|TargetStockUnit||`object`||see <a href="/#reference/wip-reference-data/stockunit">StockUnit</a> endpoint||
-|ArrivalDate|phys09_arrivaldate|`string`||||
-|ArrivalMemo|phys09_arrivalmemo|`string`|250|||
-|ArrivalWeight|phys09_arrivalweight|`number`||||
-|LoadingStartDate|phys09_loadstartdate|`string`||||
-|LoadingStartMemo|phys09_loadstartmemo|`string`|250|||
-|LoadingEndDate|phys09_loadenddate|`string`||||
-|LoadingPoint|phys09_loadendmemo|`string`|250|||
-|FirstWeight|phys09_firstweight|`number`||||
-|FirstWeightWeighbridgeId|phys09_firstweightwbid|`string`|10|||
-|FirstWeightId|phys09_firstweightid|`string`|10|||
-|SecondWeight|phys09_secondweight|`number`||||
-|SecondWeightWeighbridgeId|phys09_secondweightwbid|`string`|10|||
-|SecondWeightId|phys09_secondweightid|`string`|10|||
-
-+ Parameters
-    + TradingEntityId (required, string, `AB`) 
-    + ReleaseId (required, number, `123`)
-
-+ Request (application/json)
-    + Header
-
-            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
-
-+ Response 200 (application/json)
-    + Attributes (StockMovement)
-
-+ Response 400 (application/json)
-    + Attributes (400 Response)
-
-+ Response 404 (application/json)
-    + Attributes (404 Response)
-
-### Update StockMovement [PUT]
-
-|property|description|type|max length|notes|constraint|
-|--------|-----------|----|----------|-----|----------|
-|ReleaseId|phys09_releasenr|`number`||||
-|OrderAcknowledged|phys09_sent|`string`|1|||
-|NetLoadedWeight|phys09_loaded|`number`||||
-|NetPumpedWeight|phys09_pumped|`number`||||
-|NetDeliveredWeight|phys09_delivered|`number`||||
-|LoadedDate|phys09_loadeddate|`number`||||
-|PumpedDate|phys09_pumpeddate|`number`||||
-|TargetStockUnitCode|phys09_stock|`string`|11||must exist in xx_cna50|
-|ArrivalDate|phys09_arrivaldate|`string`||||
-|ArrivalMemo|phys09_arrivalmemo|`string`|250|||
-|ArrivalWeight|phys09_arrivalweight|`number`||||
-|LoadingStartDate|phys09_loadstartdate|`string`||||
-|LoadingStartMemo|phys09_loadstartmemo|`string`|250|||
-|LoadingEndDate|phys09_loadenddate|`string`||||
-|LoadingPoint|phys09_loadendmemo|`string`|250|||
-|FirstWeight|phys09_firstweight|`number`||||
-|FirstWeightWeighbridgeId|phys09_firstweightwbid|`string`|10|||
-|FirstWeightId|phys09_firstweightid|`string`|10|||
-|SecondWeight|phys09_secondweight|`number`||||
-|SecondWeightWeighbridgeId|phys09_secondweightwbid|`string`|10|||
-|SecondWeightId|phys09_secondweightid|`string`|10|||
-
-
-+ Parameters
-    + TradingEntityId (required, string, `AB`) 
-    + ReleaseId (required, number, `123`)
-
-+ Request (application/json)
-    + Header
-
-            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
-
-   + Attributes (StockMovement Flat)
-
-+ Response 201 (application/json)
-    + Attributes (201 UpdateResponse)
-
-+ Response 400 (application/json)
-    + Attributes (400 Response)
-
-+ Response 404 (application/json)
-    + Attributes (404 Response)
-
 
 ## AccessToken [/AT]
 Model Header containing AccessToken
@@ -1827,6 +1578,254 @@ Orders specifically representing movements of goods between Stock Units (aka Man
 
 
 
+# Group Inventory/Physicals/Stock Management
+Management activities of Stock Units (where represented by WIP Accounts).
+
+## StockBatch [/Inventory/{TradingEntityId}/Physicals/StockManagement/StockBatch/{StockBatchId}]
+Batch record information by Stock Unit
+### Read StockBatch [GET]
+
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|StockBatchId|cna70_batchid|`string`|20|||
+|StockUnitCode||`object`||see <a href="/#reference/wip-reference-data/stockunit">StockUnit</a> endpoint||
+|BatchCreateDate|cna70_batchcreated|`string`|0|||
+|BatchText|cna70_text|`string`|1000|||
+
+
++ Request
+    [AccessToken][]
+    
++ Parameters
+    + TradingEntityId (required, string, `AB`) 
+    + StockBatchId (required, string, `abc123`)
+
++ Response 200 (application/json)
+    + Attributes (StockBatch)
+
++ Response 400 (application/json)
+    + Attributes (400 Response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Response)
+
+## StockBatch List [/Inventory/{TradingEntityId}/Physicals/StockManagement/StockBatch/{Property}/{PropertyValue}]
+Batch record information by Stock Unit.
+### List StockBatches [GET]
+
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|StockBatchId|cna70_batchid|`string`|20|||
+|StockUnitCode|cna70_acc|`string`|11|||
+|BatchCreateDate|cna70_batchcreated|`string`|0|||
+|BatchText|cna70_text|`string`|1000|||
+
+
++ Request
+    [AccessToken][]
+    
++ Parameters
+    + TradingEntityId (required, string, `AB`) 
+    + Property (optional, enum[string]) ... identify property name to filter by 
+       + Members
+            + StockBatchId 
+            + StockUnitCode
+    + PropertyValue (optional, string, `abc123`) ... required if property specified.
+
++ Response 200 (application/json)
+    + Attributes (StockBatch List)
+
++ Response 400 (application/json)
+    + Attributes (400 BadPropertyResponse)
+    
++ Response 404 (application/json)
+    + Attributes (404 Response)
+
+
+# Group Inventory/Physicals/Stock Processing
+Production Order processing services.
+
+## MarkOrderAsProcessed [/Inventory/{TradingEntityId}/Physicals/OrderProcessing/MarkOrderAsProcessed/{ReleaseId}]
+`TBD`
+### Update MarkOrderAsProcessed [GET]
+
++ Response 200 (application/json)
+
+## StockLoading [/Inventory/{TradingEntityId}/Physicals/OrderProcessing/StockLoading/{ReleaseId}]
+Information specific to the source of the goods generated during any movement (Delivery Out or Stock to Stock).
+### Read StockLoading [GET]
+
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|ReleaseId|phys10_releasenr|`number`|||Unique Key|
+|SourceStockUnitCode||`object`|||see <a href="/#reference/wip-reference-data/stockunit">StockUnit</a> endpoint||
+|Weight|phys10_qty|`number`||||
+
++ Request
+    [AccessToken][]
+
++ Parameters
+    + TradingEntityId (required, string, `AB`) 
+    + ReleaseId (required, number, `123`)
+
++ Response 200 (application/json)
+    + Attributes (StockLoading)
+    
++ Response 400 (application/json)
+    + Attributes (400 Response)
+    
++ Response 404 (application/json)
+    + Attributes (404 Response)
+
+### Create StockLoading [POST]
+
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|ReleaseId|phys10_releasenr|`number`||required|Unique Key|
+|SourceStockUnitCode|phys10_tank|`string`|11|required|must exist in xx_cna50|
+|Weight|phys10_qty|`number`||required||
+
++ Parameters
+    + TradingEntityId (required, string, `AB`) 
+    + ReleaseId (required, number, `123`)
+
++ Request (application/json)
+    + Header
+
+            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
+
+    + Attributes (array [StockLoadingFlat])
+
++ Response 200 (application/json)
+    + Attributes (200 CreateResponse)
+
++ Response 400 (application/json)
+    + Attributes (400 Response)
+
++ Response 404 (application/json)
+    + Attributes (404 Response)
+
+### Update StockLoading [PUT]
+Please note that sending an update will remove any current records for the TradingEntity/ReleaseNr combination and replace them with records sent.
+
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|ReleaseId|phys10_releasenr|`number`||required|Unique Key|
+|SourceStockUnitCode|phys10_tank|`string`|11|required|must exist in xx_cna50|
+|Weight|phys10_qty|`number`||required||
+
++ Parameters
+    + TradingEntityId (required, string, `AB`) 
+    + ReleaseId (required, number, `123`)
+
++ Request (application/json)
+    + Header
+
+            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
+
+    + Attributes (array [StockLoadingFlat])
+
++ Response 201 (application/json)
+    + Attributes (201 UpdateResponse)
+
++ Response 400 (application/json)
+    + Attributes (400 Response)
+
++ Response 404 (application/json)
+    + Attributes (404 Response)
+
+## StockMovement [/Inventory/{TradingEntityId}/Physicals/OrderProcessing/StockMovement/{ReleaseId}]
+Information relating to the processing of the Order. 
+### Read StockMovement [GET]
+
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|ReleaseId|phys09_releasenr|`number`||||
+|OrderAcknowledged|phys09_sent|`string`|1|||
+|NetLoadedWeight|phys09_loaded|`number`||||
+|NetPumpedWeight|phys09_pumped|`number`||||
+|NetDeliveredWeight|phys09_delivered|`number`||||
+|LoadedDate|phys09_loadeddate|`number`||||
+|PumpedDate|phys09_pumpeddate|`number`||||
+|TargetStockUnit||`object`||see <a href="/#reference/wip-reference-data/stockunit">StockUnit</a> endpoint||
+|ArrivalDate|phys09_arrivaldate|`string`||||
+|ArrivalMemo|phys09_arrivalmemo|`string`|250|||
+|ArrivalWeight|phys09_arrivalweight|`number`||||
+|LoadingStartDate|phys09_loadstartdate|`string`||||
+|LoadingStartMemo|phys09_loadstartmemo|`string`|250|||
+|LoadingEndDate|phys09_loadenddate|`string`||||
+|LoadingPoint|phys09_loadendmemo|`string`|250|||
+|FirstWeight|phys09_firstweight|`number`||||
+|FirstWeightWeighbridgeId|phys09_firstweightwbid|`string`|10|||
+|FirstWeightId|phys09_firstweightid|`string`|10|||
+|SecondWeight|phys09_secondweight|`number`||||
+|SecondWeightWeighbridgeId|phys09_secondweightwbid|`string`|10|||
+|SecondWeightId|phys09_secondweightid|`string`|10|||
+
++ Parameters
+    + TradingEntityId (required, string, `AB`) 
+    + ReleaseId (required, number, `123`)
+
++ Request (application/json)
+    + Header
+
+            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
+
++ Response 200 (application/json)
+    + Attributes (StockMovement)
+
++ Response 400 (application/json)
+    + Attributes (400 Response)
+
++ Response 404 (application/json)
+    + Attributes (404 Response)
+
+### Update StockMovement [PUT]
+
+|property|description|type|max length|notes|constraint|
+|--------|-----------|----|----------|-----|----------|
+|ReleaseId|phys09_releasenr|`number`||||
+|OrderAcknowledged|phys09_sent|`string`|1|||
+|NetLoadedWeight|phys09_loaded|`number`||||
+|NetPumpedWeight|phys09_pumped|`number`||||
+|NetDeliveredWeight|phys09_delivered|`number`||||
+|LoadedDate|phys09_loadeddate|`number`||||
+|PumpedDate|phys09_pumpeddate|`number`||||
+|TargetStockUnitCode|phys09_stock|`string`|11||must exist in xx_cna50|
+|ArrivalDate|phys09_arrivaldate|`string`||||
+|ArrivalMemo|phys09_arrivalmemo|`string`|250|||
+|ArrivalWeight|phys09_arrivalweight|`number`||||
+|LoadingStartDate|phys09_loadstartdate|`string`||||
+|LoadingStartMemo|phys09_loadstartmemo|`string`|250|||
+|LoadingEndDate|phys09_loadenddate|`string`||||
+|LoadingPoint|phys09_loadendmemo|`string`|250|||
+|FirstWeight|phys09_firstweight|`number`||||
+|FirstWeightWeighbridgeId|phys09_firstweightwbid|`string`|10|||
+|FirstWeightId|phys09_firstweightid|`string`|10|||
+|SecondWeight|phys09_secondweight|`number`||||
+|SecondWeightWeighbridgeId|phys09_secondweightwbid|`string`|10|||
+|SecondWeightId|phys09_secondweightid|`string`|10|||
+
+
++ Parameters
+    + TradingEntityId (required, string, `AB`) 
+    + ReleaseId (required, number, `123`)
+
++ Request (application/json)
+    + Header
+
+            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
+
+   + Attributes (StockMovement Flat)
+
++ Response 201 (application/json)
+    + Attributes (201 UpdateResponse)
+
++ Response 400 (application/json)
+    + Attributes (400 Response)
+
++ Response 404 (application/json)
+    + Attributes (404 Response)
 
 
 
