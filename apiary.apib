@@ -936,7 +936,7 @@ Stock Account profile.
 |StockUnitDescription|cna50_descr|`string`|60|||
 |TerminalCode|cna50_terminal|`string`|4||must exist in xx_cmy21|
 |DepartmentCode|cna50_dept|`string`|4||must exist in xx_cmy102|
-|CommodityCode|phys01_commod, phys01_origin, phys01_grade, phys01_cmycode4, phys01_cmycode5|`string`|50|Filter|`Composite Key` delimited by double pipe "&#124; &#124;"|
+|CommodityCode|phys01_commod, phys01_origin, phys01_grade, phys01_cmycode4, phys01_cmycode5|`string`|50||`Composite Key` delimited by double pipe "&#124; &#124;"|
 |NominalAccountCode|cna50_liqplacc|`string`|9||must exist in xx_nhr20|
 |StockOwnerCode|cna50_owner|`string`|50||must exist in xx_chr20|
 |ReleaseState|cna50_siemenrel|`number`||||
@@ -1186,6 +1186,25 @@ Principle Physical Contract (agreement) details
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
+|ContractId|phys01_contract|`string`|10|||
+|ContractType|phys01_contype|`string`|1|||
+|ContractDate|phys01_condate|`number`||||
+|Department||`object`||see <a href="/#reference/nominal-reference-data/department">Department</a> endpoint||
+|Trader||`object`||see <a href="/#reference/global-reference-data/useraccount-list">UserAccount List</a> endpoint||
+|ClientReference|phys01_clref|`string`|40|||
+|Buyer||`object`||see <a href="/#reference/data-object-definitions">Account Header</a> object||
+|Seller||`object`||see <a href="/#reference/data-object-definitions">Account Header</a> object||
+|Counterparty||`object`||see <a href="/#reference/data-object-definitions">Account Header</a> object||
+|Commodity||`object`||see <a href="/#reference/physicals-reference-data/commodity-list/list-commodities">Commodity List</a> endpoint||
+|PaymentTerm||`object`||see <a href="/#reference/physicals-reference-data/paymentterm-list/list-paymentterms">PaymentTerm List</a> endpoint||
+|ContractTerm||`object`||see <a href="/#reference/physicals-reference-data/contract-term-list/list-contractterms">ContractTerm List</a> endpoint||
+|ContractTermPort||`object`||see <a href="/#reference/physicals-reference-data/port-list/list-ports">Port List</a> endpoint||
+|UnitOfMeasurement||`object`||see <a href=""></a> endpoint||
+|OriginalContractQuantity|phys01_origquan|`number`||||
+|CurrentContractQuantity|phys01_conquan|`number`||||
+|ContractStatus|phys01_status|`string`|1|||
+|ContractApproved|phys01_approved|`string`|1|||
+
 
 
 + Request
