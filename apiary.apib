@@ -1100,7 +1100,7 @@ Provides access to financial transactions yet to be posted to the ledgers (eithe
     + DocRef (required, string, `CN1600001`)
 
 + Response 200 (application/json)
-    + Attributes (UnPostedTransaction)
+    + Attributes (array [UnPostedTransaction)]
 
 + Response 400 (application/json)
     + Attributes (400 Response)
@@ -2267,6 +2267,33 @@ A multipurpose object used by several endpoints and with multiple source tables 
 + InterfaceStatus: y (string)
 + PostedDate: 20160101 (number)
 + DocumentDate: 20160101 (number)
+
+## UnPostedTransaction (object)
++ DocumentReference: CN1600001 (string)
++ AccountLedgerType: C (string)
++ DocumentDate: 20150731 (string)
++ ValueDate: 20150828 (string)
++ Account  (AccountHeader)
++ DocumentCurrency  (Currency)
++ AmountInDocumentCurrency: 28607.34 (number)
++ FunctionalCurrency  (Currency)
++ AmountInFunctionalCurrency: 8607.34 (number)
++ AmountInLocalCurrency: 607.34 (number)
++ RateOfExchangeApplied: 20.12 (number)
++ RateOfExchangeType: M (string)
++ WeightInQtyCode: 11629.00 (number)
++ ContractReference: SC00338 (string)
++ ExpenseCode (Expense)
++ Department (Department)
++ PaymentTerm  (PaymentTerm)
++ VatRate:  (VATRate)
++ ClientReference: abc123 (string)
++ Narrative: Reversal of SI1501924 (string)
++ MarketReference: 123abc (string)
++ PromptMonth: 5 (number)
++ OptionType: C (string)
++ CommodityReference: referenceId (string)
+
 
 ## UserAccount (object)
 + UserAccountId: JS (string)
