@@ -936,7 +936,7 @@ Stock Account profile.
 |StockUnitDescription|cna50_descr|`string`|60|||
 |TerminalCode|cna50_terminal|`string`|4||must exist in xx_cmy21|
 |DepartmentCode|cna50_dept|`string`|4||must exist in xx_cmy102|
-|CommodityCode|phys01_commod, phys01_origin, phys01_grade, phys01_cmycode4, phys01_cmycode5|`string`|50||`Composite Key` delimited by double pipe "&#124; &#124;"|
+|CommodityCode|phys01_commod, phys01_origin, phys01_grade, phys01_cmycode4, phys01_cmycode5|`string`|50||`Composite Key` delimited by double pipe "&#124;&#124;"|
 |NominalAccountCode|cna50_liqplacc|`string`|9||must exist in xx_nhr20|
 |StockOwnerCode|cna50_owner|`string`|50||must exist in xx_chr20|
 |ReleaseState|cna50_siemenrel|`number`||||
@@ -1015,7 +1015,7 @@ Provides access to full accounting ledger by Document Reference.
 |--------|-----------|----|----------|-----|----------|
 |DocumentReference|txx_docref|`string`|9|||
 |AccountLedgerType|txx_acctype|`string`|1|||
-|TransactionKey|txx_account, txx_ccy, txx_period, txx_postdate, txx_posttime|`string`|50|Filter|`Composite Key` delimited by double pipe "&#124; &#124;"|
+|TransactionKey|txx_account, txx_ccy, txx_period, txx_postdate, txx_posttime|`string`|50|Filter|`Composite Key` delimited by double pipe "&#124;&#124;"|
 |AccountCode||`object`||||
 |DocumentCurrency||`object`||||
 |AccountingPeriod|txx_period|`number`||||
@@ -1238,7 +1238,7 @@ List of Principle Physical Contracts (agreements)
 |BuyerAccountCode|phys01_buyer|`string`|10|||
 |SellerAccountCode|phys01_seller|`string`|10|||
 |CounterpartyCode|phys01_counterparty|`string`|10|||
-|CommodityCode| phys01_commod, phys01_origin, phys01_grade, phys01_cmycode4, phys01_cmycode5|`string`|50|Filter|`Composite Key` delimited by double pipe `&#124;&#124;`|
+|CommodityCode| phys01_commod, phys01_origin, phys01_grade, phys01_cmycode4, phys01_cmycode5|`string`|50|Filter|`Composite Key` delimited by double pipe "&#124;&#124;"|
 |PaymentTermCode|phys01_payterms|`string`|8|||
 |ContractTermCode|phys01_conterms|`string`|8|||
 |ContractTermPortCode|phys01_contermsport|`string`|8|||
