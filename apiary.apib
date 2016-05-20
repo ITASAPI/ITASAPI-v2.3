@@ -1091,19 +1091,16 @@ Provides access to financial transactions yet to be posted to the ledgers (eithe
 |OptionType|dhl21_extype|`string`|1||‘C’, ‘P’, ‘ ‘|
 |CommodityReference|dhlxx_component|`string`|15|||
 
-+ Request (application/json)
-    + Header
 
-            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
-
-    + Attributes (array [TransactionHeader])
++ Request
+    [AccessToken][]
     
 + Parameters
     + TradingEntityId (required, string, `AB`) 
     + DocRef (required, string, `CN1600001`)
 
-+ Response 201 (application/json)
-    + Attributes (201 UpdateResponse)
++ Response 200 (application/json)
+    + Attributes (UnPostedTransaction)
 
 + Response 400 (application/json)
     + Attributes (400 Response)
@@ -1126,15 +1123,19 @@ Document summary information including properties specific to integration requir
 |PostedDate|xtx01_postdatetime|`string`||||
 |DocumentDate|xtx01_txxddate|`datetime`||||
 
-+ Request
-    [AccessToken][]
++ Request (application/json)
+    + Header
+
+            AccessToken: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6ImRlZXBhayIsInN1YiI6ImRlZXBhayIsInJvbGUiOlsiNzk5YjhhNDEtYWI0ZS00MTBhLWI5MTktYzU3ZWFlMmFlMDI5IiwiZGVlcGFrIiwiQVNQLk5FVCBJZGVudGl0eSIsIjViNDE4ODE2LTI3ZjQtNGRlOC1iNmMyLTJlZTcxNjI3ZmJmYyIsIkFkbWluIiwiU3VwZXJBZG1pbiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMjciLCJhdWQiOiI4MjkzNjk0MjJmNzA0NTIzODUxZDk4NTU2YjZkNTQyYiIsImV4cCI6MTQ1OTQzMjk0MSwibmJmIjoxNDU5NDMxMTQxfQ.JgPGxt0Ok5baKx0YMXlO6D9kUYrCWM-Kma9b9iMW8tg
+
+    + Attributes (array [TransactionHeader])
     
 + Parameters
     + TradingEntityId (required, string, `AB`) 
     + DocRef (required, string, `CN1600001`)
 
-+ Response 200 (application/json)
-    + Attributes (UnPostedTransaction)
++ Response 201 (application/json)
+    + Attributes (201 UpdateResponse)
 
 + Response 400 (application/json)
     + Attributes (400 Response)
