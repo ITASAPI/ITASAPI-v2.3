@@ -1219,7 +1219,7 @@ List of Principle Physical Contracts (agreements)
 |ClientReference|phys01_clref|`string`|40|||
 |BuyerAccountCode|phys01_buyer|`string`|10|||
 |SellerAccountCode|phys01_seller|`string`|10|||
-|CounterpartyCode|phys01_counterparty|`string`|10|Filter||
+|CounterpartyCode| Composite key delimited by double pipe "&#124; &#124;" |`string`|255|Filter|`Composite Key`|
 |CommodityFullCode|phys01_commod|`string`|3|||
 |PaymentTermCode|phys01_payterms|`string`|8|||
 |ContractTermCode|phys01_conterms|`string`|8|||
