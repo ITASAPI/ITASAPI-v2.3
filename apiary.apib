@@ -1036,7 +1036,7 @@ Provides access to full accounting ledger by Document Reference.
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
 |DocumentReference|txx_docref|`string`|9|||
-|AccountLedgerType|txx_acctype|`string`|1|||
+|AccountLedgerType|txx_acctype|`string`|1|`C`, `N` or `K`||
 |TransactionKey|txx_account, txx_ccy, txx_period, txx_postdate, txx_posttime|`string`|50|Filter|`Composite Key` delimited by double pipe "&#124;&#124;"|
 |Account||`object`||see <a href="/#reference/data-object-definitions/accountheader">AccountHeader</a> object||
 |DocumentCurrency||`object`||see <a href="/#reference/nominal-reference-data/nominalaccount">Currency</a> endpoint||
@@ -1858,7 +1858,7 @@ The account header object is derived from multiple locations of the database dep
 |AccountId|chr20_acc|`string`|11|||
 |AccountDescription|chr20_title|`string`|200|||
 |EDICode|chr20_ediaddr|`string`|50|||
-|Status|Status|`string`|1|||
+|Status|chr20_status|`string`|1|||
 
 <br />
 <strong>AccountType: N</strong>
@@ -1867,7 +1867,7 @@ The account header object is derived from multiple locations of the database dep
 |--------|-----------|----|----------|-----|----------|
 |AccountType|A single letter denoting type|`string`|1|`N`||
 |AccountId|nhr20_acc|`string`|11|||
-|AccountDescription|`nhr20_titdescr+|+nhr20_detdescr`|`string`|200|||
+|AccountDescription|`nhr20_titdescr &#124; nhr20_detdescr`|`string`|200|||
 |EDICode|nhr20_altcode|`string`|50|||
 |Status|nhr20_status|`string`|1|||
 
