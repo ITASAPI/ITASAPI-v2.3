@@ -14,7 +14,6 @@ VERSION: 2.3
 <div>~ Endpoints updated in this release: none.</div> 
 <div>** ends ** </div>
 
-
 ## AccessToken [/AT]
 Model Header containing AccessToken
 
@@ -1594,14 +1593,14 @@ Orders specifically representing movements of goods between Stock Units (aka Man
 Management activities of Stock Units (where represented by WIP Accounts).
 
 ## StockBatch [/Inventory/{TradingEntityId}/Physicals/StockManagement/StockBatch/{StockBatchId}]
-Batch record information by Stock Unit.
+Batch record information by Stock Unit
 ### Read StockBatch [GET]
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
 |StockBatchId|cna70_batchid|`string`|20|||
 |StockUnitCode||`object`||see <a href="/#reference/wip-reference-data/stockunit">StockUnit</a> endpoint||
-|BatchCreateDate|cna70_batchcreated|`datetime`|0|||
+|BatchCreateDate|cna70_batchcreated|`string`|0|||
 |BatchText|cna70_text|`string`|1000|||
 
 
@@ -1629,7 +1628,7 @@ Batch record information by Stock Unit.
 |--------|-----------|----|----------|-----|----------|
 |StockBatchId|cna70_batchid|`string`|20|||
 |StockUnitCode|cna70_acc|`string`|11|||
-|BatchCreateDate|cna70_batchcreated|`datetime`|0|||
+|BatchCreateDate|cna70_batchcreated|`string`|0|||
 |BatchText|cna70_text|`string`|1000|||
 
 
