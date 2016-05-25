@@ -10,8 +10,14 @@ VERSION: 2.3
 <li><strong>Accounting > Transactions</strong>: Read Posted Transaction, Read Unposted Transaction, Update Transaction Header, List Transaction Headers.</li>
 <li><strong>Reference Data</strong>: List Expenses, List VAT Rates, List Contract Terms.</li>
 <li><strong>Contracts > Physical</strong>: Read Physical Trade, List Physical Trades, Read Physical Trades Commission, List Physical Trade Commissions, List Physical Trade Shipment.</li>
+</ul>
 </div>
-<div>~ Endpoints updated in this release: none.</div> 
+<div>~ Endpoints updated in this release:
+<ul>
+<li><strong>Client Reference Data > Client Account</strong>: updated both `Create` and `Update` endpoints to flat structures.</li>
+
+</ul>
+</div> 
 <div>** ends ** </div>
 
 
@@ -92,7 +98,6 @@ Client Ledger Account profile.
 |GroupAccountMember|chr20_group|`boolean`|1|||
 |HeadOfFamilyAccountCode|chr20_headcl|`string`|10|||
 |EDICode|chr20_ediaddr|`string`|50|||
-|<strong>Contact Details</strong>|
 |AddressLine1|chr20_addr1|`string`|60|||
 |AddressLine2|chr20_addr2|`string`|60|||
 |AddressLine3|chr20_addr3|`string`|60|||
@@ -102,13 +107,11 @@ Client Ledger Account profile.
 |EmailAddress|chr20_emailaddr|`string`|100|||
 |PhoneNumber|chr20_phoneno|`string`|40|||
 |FaxNumber|chr20_faxno|`string`|40|||
-|<strong>Client Limits</strong>|
 |ClientDateLimitsApproved|chr20_limit_date|`datetime`|0|||
 |ClientLimitsCurrencyCode|chr20_clccy|`string`|3|||
 |ClientPaymentLimit|chr20_paylimit|`number`|18,8|||
 |ClientMarketDefaultRiskLimit|chr20_mktdefrisklimit|`number`|18,8|||
 |ClientCommitmentLimit|chr20_fwdlimit|`number`|18,8|||
-|<strong>Family Limits</strong>|
 |FamilyDateLimitsApproved|chr31_limit_date|`datetime`|0|||
 |FamilyLimitsCurrencyCode|chr31_clccy|`string`|3|||
 |FamilyPaymentLimit|chr31_paylimit|`number`|0|||
@@ -149,7 +152,6 @@ For Update requests the field `ClientAccountId` is used to check the correspondi
 |GroupAccountMember|chr20_group|`boolean`|1|||
 |HeadOfFamilyAccountCode|chr20_headcl|`string`|10|||
 |EDICode|chr20_ediaddr|`string`|50|||
-|<strong>Contact Details</strong>|
 |AddressLine1|chr20_addr1|`string`|60|||
 |AddressLine2|chr20_addr2|`string`|60|||
 |AddressLine3|chr20_addr3|`string`|60|||
@@ -159,13 +161,11 @@ For Update requests the field `ClientAccountId` is used to check the correspondi
 |EmailAddress|chr20_emailaddr|`string`|100|||
 |PhoneNumber|chr20_phoneno|`string`|40|||
 |FaxNumber|chr20_faxno|`string`|40|||
-|<strong>Client Limits</strong>|
 |ClientDateLimitsApproved|chr20_limit_date|`datetime`|0|||
 |ClientLimitsCurrencyCode|chr20_clccy|`string`|3|||
 |ClientPaymentLimit|chr20_paylimit|`number`|18,8|||
 |ClientMarketDefaultRiskLimit|chr20_mktdefrisklimit|`number`|18,8|||
 |ClientCommitmentLimit|chr20_fwdlimit|`number`|18,8|||
-|<strong>Family Limits</strong>|
 |FamilyDateLimitsApproved|chr31_limit_date|`datetime`|0|||
 |FamilyLimitsCurrencyCode|chr31_clccy|`string`|3|||
 |FamilyPaymentLimit|chr31_paylimit|`number`|0|||
@@ -1994,19 +1994,25 @@ The account header object is derived from multiple locations of the database dep
 + GroupAccountMember: true (boolean)
 + HeadOfFamilyAccountCode: HEAD.P (string)
 + EDICode: extABCDEF (string) 
-+ ContactDetails (ContactDetails CreateUpdate)
-+ ClientLimits 
-    + ClientDateLimitsApproved: `2015-12-01T00:00:00` (string)
-    + ClientLimitsCurrencyCode: GBP (string)
-    + ClientPaymentLimit: 0 (number)
-    + ClientMarketDefaultRiskLimit: 250000 (number)
-    + ClientCommitmentLimit: 175000 (number)
-+ FamilyLimits
-    + FamilyDateLimitsApproved: `2016-02-20T00:00:00` (string)
-    + FamilyLimitsCurrencyCode: GBP (string)
-    + FamilyPaymentLimit: 2000000 (number)
-    + FamilyMarketDefaultRiskLimit: 3000000 (number)
-    + FamilyCommitmentLimit: 2750000 (number)
++ AddressLine1: Address Line #1 (string)
++ AddressLine2: Address Line #2 (string) 
++ AddressLine3: Address Line #3 (string) 
++ AddressLine4: Address Line #4 (string) 
++ ZipCode: 01234567 (string) 
++ CountryCode (Country)
++ EmailAddress: info@abcdef.com (string)
++ PhoneNumber: 01234 567890 (string)
++ FaxNumber: 01234 567890 (string)
++ ClientDateLimitsApproved: `2015-12-01T00:00:00` (string)
++ ClientLimitsCurrencyCode: GBP (string)
++ ClientPaymentLimit: 0 (number)
++ ClientMarketDefaultRiskLimit: 250000 (number)
++ ClientCommitmentLimit: 175000 (number)
++ FamilyDateLimitsApproved: `2016-02-20T00:00:00` (string)
++ FamilyLimitsCurrencyCode: GBP (string)
++ FamilyPaymentLimit: 2000000 (number)
++ FamilyMarketDefaultRiskLimit: 3000000 (number)
++ FamilyCommitmentLimit: 2750000 (number)
 
 ## ClientAccount List (object)
 + ClientAccountId: ABCDEF.P (string) 
