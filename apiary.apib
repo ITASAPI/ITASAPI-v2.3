@@ -956,7 +956,7 @@ Stock Account profile.
 |DepartmentCode|cna50_dept|`string`|4||must exist in xx_cmy102|
 |CommodityCode|phys01_commod, phys01_origin, phys01_grade, phys01_cmycode4, phys01_cmycode5|`string`|50||`Composite Key` delimited by double pipe "&#124;&#124;"|
 |NominalAccountCode|cna50_liqplacc|`string`|9||must exist in xx_nhr20|
-|StockOwnerCode|cna50_owner|`string`|50||must exist in xx_chr20|
+|StockOwnerCode|cna50_vendor|`string`|50||must exist in xx_chr20|
 |ReleaseState|cna50_siemenrel|`number`||||
 |CurrentStatus|cna50_siemenstatus|`number`||||
 |PrivilegeLevel|cna50_priv|`number`|1||0-9|
@@ -1301,8 +1301,7 @@ Broker commissions held against Physical Contracts.
 |--------|-----------|----|----------|-----|----------|
 |ContractId|phys02_contract|`string`|10|CompositeKey||
 |UniqueID|phys02_unique|`string`|10|CompositeKey||
-|AgentAccount|phys02_agent|`object`|10|hys01_clref|`string`|40|||
-|Buyer||`object`||see <a href="/#reference/data-object-definitions">Account Header</a> object||
+|AgentAccount|phys02_agent|`object`||see <a href="/#reference/data-object-definitions">Account Header</a>||
 |AgentReference|phys02_agref|`string`|40|||
 
 
