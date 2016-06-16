@@ -56,7 +56,7 @@ Client Ledger Account profile
     
 + Parameters
     + TradingEntityId (required, string, `AB`) ... identify specific trading entity
-    + Property (optional, enum[string]) ... identify property name to filter by 
+    + Property: Status (optional, enum[string]) ... identify property name to filter by 
        + Members
             + Status
             + CanBeBuyer
@@ -1446,9 +1446,9 @@ Orders (CallOffs) specifically representing outgoing goods.
 + Response 404 (application/json)
     + Attributes (404 Response)
 
-## ExpedCallOff [/Inventory/{TradingEntityId}/Physicals/OrderScheduling/ExpedCallOffs/{ReleaseId}]
+## ExpedCallOff [/Inventory/{TradingEntityId}/Physicals/OrderScheduling/ExpedCallOffged/{ReleaseId}]
 Orders (CallOffs) generated through EXPED
-### Read ExpedCallOffs [GET]
+### Read ExpedCallOff [GET]
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -1663,7 +1663,7 @@ Production Order processing services.
 
 ## MarkOrderAsProcessed [/Inventory/{TradingEntityId}/Physicals/OrderProcessing/MarkOrderAsProcessed/{ReleaseId}]
 `TBD`
-### Update MarkOrderAsProcessed [GET]
+### Update MarkOrderAsProcessed [PUT]
 
 + Response 200 (application/json)
 
