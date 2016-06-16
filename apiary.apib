@@ -1024,7 +1024,7 @@ Stock Account profile.
 # Group Accounting/Transactions
 Data Objects and endpoints providing access to accounting transactions generated through ITAS processes.
 
-## Posted Transaction [/Accounting/{TradingEntityId}/Transaction/PostedTransaction/{DocRef}]
+## Posted Transaction [/Accounting/{TradingEntityId}/Transaction/PostedTransaction/{DocumentReference}]
 Provides access to full accounting ledger by Document Reference.
 ### Read Posted Transaction [GET]
 `New` in release 2.3
@@ -1065,7 +1065,7 @@ Provides access to full accounting ledger by Document Reference.
     
 + Parameters
     + TradingEntityId (required, string, `AB`) 
-    + DocRef (required, string, `P10000.000`)
+    + DocumentReference (required, string, `P10000.000`)
 
 + Response 200 (application/json)
     + Attributes (array [PostedTransaction])
@@ -1077,7 +1077,7 @@ Provides access to full accounting ledger by Document Reference.
     + Attributes (404 Response)
 
 
-## UnPosted Transaction [/Accounting/{TradingEntityId}/Transaction/UnPostedTransaction/{DocRef}]
+## UnPosted Transaction [/Accounting/{TradingEntityId}/Transaction/UnPostedTransaction/{DocumentReference}]
 Provides access to financial transaction details yet to be posted to the ledgers (either held-authorised or not authorised) by Document Reference.
 ### Read Unposted Transaction [GET]
 `New` in release 2.3
@@ -1115,7 +1115,7 @@ Provides access to financial transaction details yet to be posted to the ledgers
     
 + Parameters
     + TradingEntityId (required, string, `AB`) 
-    + DocRef (required, string, `CN1600001`)
+    + DocumentReference (required, string, `CN1600001`)
 
 + Response 200 (application/json)
     + Attributes (array [UnPostedTransaction])
@@ -1128,7 +1128,7 @@ Provides access to financial transaction details yet to be posted to the ledgers
 
 
 
-## Transaction Header [/Accounting/{TradingEntityId}/Transaction/TransactionHeader/{DocRef}]
+## Transaction Header [/Accounting/{TradingEntityId}/Transaction/TransactionHeader/{DocumentReference}]
 Document summary information including properties specific to integration requirements.
 ### Update Transaction Header [PUT]
 `New` in release 2.3
@@ -1149,7 +1149,7 @@ Document summary information including properties specific to integration requir
     
 + Parameters
     + TradingEntityId (required, string, `AB`) 
-    + DocRef (required, string, `CN1600001`)
+    + DocumentReference (required, string, `CN1600001`)
 
 + Response 201 (application/json)
     + Attributes (201 UpdateResponse)
@@ -1180,7 +1180,7 @@ Document summary information including properties specific to integration requir
     + TradingEntityId: AB (required, string) 
     + Property (optional, enum[string])  
        + Members
-            + DocRef (optional, string) 
+            + DocumentReference (optional, string) 
             + EDICode (optional, string)
     + PropertyValue (optional, string, `abc`)
 
