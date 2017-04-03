@@ -3,7 +3,16 @@ HOST: http://itas.apiary.io/
 VERSION: 2.3
 
 # ITAS API 2.3
+
+## Disclaimer
+
+**** Warning: at this point, ITAS API does not support asynchronus calls for POST, PUT and PATCH requests. Async requests could result in various Error messages, or even a corruption of data in extreme cases and are therefore not supported. ****
+<br />
+<br />
+
 <strong>Release notes</strong> (20<sup>th</sup> May 2016)
+<br />
+
 <div>~ The Apiary menu has been amended to separate Accounting, Contracts & Inventory endpoints.
 <div>~ New endpoints added in this release:
 <ul>
@@ -128,8 +137,8 @@ Client Ledger Account profile.
     + Attributes (404 Response)
 
 ### Create ClientAccount [POST]
-For Update requests the field `ClientAccountId` is used to check the corresponding value in the URI.
-
+For Update requests the field `ClientAccountId` is used to check the corresponding value in the URI. * <a href="/#introduction/disclaimer"> (Disclaimer)</a>
+ 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
 |ClientAccountId|chr20_acc|`string`|10||required|
@@ -192,7 +201,7 @@ For Update requests the field `ClientAccountId` is used to check the correspondi
     + Attributes (404 Response)
 
 ### Update ClientAccount [PUT]
-For Update requests the field `ClientAccountId` is used as a check and cannot be changed.
+For Update requests the field `ClientAccountId` is used as a check and cannot be changed. * <a href="/#introduction/disclaimer"> (Disclaimer)</a>
 
 
 |property|description|type|max length|notes|constraint|
@@ -536,6 +545,8 @@ Nominal (General) Ledger Account profile.
     + Attributes (404 Response)
     
 ### Update NominalAccount [PUT]
+* <a href="/#introduction/disclaimer"> (Disclaimer)</a>
+
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
 |NominalAccountId|nhr20_acc|`string`|9|required||
@@ -987,7 +998,7 @@ Stock Account profile.
     + Attributes (404 Response)
 
 ## StockUnit [/RefrenceData/{TradingEntityId}/WipLedger/StockUnit/{StockUnitId}]
-Stock Account profile.
+Stock Account profile. 
 ### Read StockUnit [GET]
 
 |property|description|type|max length|notes|constraint|
@@ -1132,7 +1143,7 @@ Provides access to financial transaction details yet to be posted to the ledgers
 ## Transaction Header [/Accounting/{TradingEntityId}/Transaction/TransactionHeader/{DocumentReference}]
 Document summary information including properties specific to integration requirements.
 ### Update Transaction Header [PUT]
-`New` in release 2.3
+`New` in release 2.3. * <a href="/#introduction/disclaimer"> (Disclaimer)</a>
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -1695,6 +1706,7 @@ Information specific to the source of the goods generated during any movement (D
     + Attributes (404 Response)
 
 ### Create StockLoading [POST]
+* <a href="/#introduction/disclaimer"> (Disclaimer)</a>
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -1723,7 +1735,7 @@ Information specific to the source of the goods generated during any movement (D
     + Attributes (404 Response)
 
 ### Update StockLoading [PUT]
-Please note that sending an update will remove any current records for the TradingEntity/ReleaseNr combination and replace them with records sent.
+Please note that sending an update will remove any current records for the TradingEntity/ReleaseNr combination and replace them with records sent. * <a href="/#introduction/disclaimer"> (Disclaimer)</a>
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
@@ -1798,6 +1810,7 @@ Information relating to the processing of the Order.
     + Attributes (404 Response)
 
 ### Update StockMovement [PUT]
+* <a href="/#introduction/disclaimer"> (Disclaimer)</a>
 
 |property|description|type|max length|notes|constraint|
 |--------|-----------|----|----------|-----|----------|
